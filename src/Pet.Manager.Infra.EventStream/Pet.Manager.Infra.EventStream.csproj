@@ -6,8 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Anima.Inscricao.Application\Anima.Inscricao.Application.csproj" />
-  </ItemGroup>
-
 </Project>
