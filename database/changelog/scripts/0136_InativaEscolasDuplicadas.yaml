@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - changeSet:
+      id: Inativa escolas duplicadas
+      author: Rafael
+      changes:
+        - sql:
+            sql: |
+
+              CREATE TEMPORARY TABLE escolas_duplicadas AS
+              select "Nome", "CidadeId", count(*)
+              from public."Escola"
+              where "Ativo" = true
+              group by "Nome", "CidadeId"
+              having count(*) > 1;
+
+              UPDATE
+                "Escola" c
+              SET
+                "Ativo" = false
+              FROM
+                escolas_duplicadas cd
+              WHERE
+                c."Nome" = cd."Nome" and 
+                c."CidadeId" = cd."CidadeId" and 
+                c."Id" != (select max("Id") from public."Escola" where "Nome" = c."Nome" and "CidadeId" = c."CidadeId");
+                
+              DROP TABLE escolas_duplicadas;

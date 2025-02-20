@@ -1,0 +1,53 @@
+databaseChangeLog:
+  - changeSet:
+      id: Atualiza formas de entrada inserindo a opção de exibir
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 1
+                sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'FormaEntrada' AND column_name = 'ExibeCard'
+      changes:
+        - sql:
+            sql: |
+
+              UPDATE "FormaEntrada"
+              SET "ExibeCard" = true
+              WHERE "Key" = 'c97cab02-7905-49ae-8a75-39b28da142d1'; -- ENEM
+
+              UPDATE "FormaEntrada"
+              SET "ExibeCard" = true
+              WHERE "Key" = '1baf5ebb-b009-4ea6-a619-da67b83d0d41'; -- Vestibular Simplificado
+
+              UPDATE "FormaEntrada"
+              SET "ExibeCard" = true
+              WHERE "Key" = 'b2cc84db-9f98-43dc-b578-735486879407'; -- Vestibular Tradicional
+
+              UPDATE "FormaEntrada"
+              SET "ExibeCard" = true
+              WHERE "Key" = '2cf76cd8-4ed8-4bd3-94f3-7f31f74fd1e1'; -- Transferência
+              
+              UPDATE "FormaEntrada"
+              SET "ExibeCard" = true
+              WHERE "Key" = '3ebb6e4a-195e-466f-9278-606cb368596a'; -- Segunda Graduação
+              
+              UPDATE "FormaEntrada"
+              SET "ExibeCard" = true
+              WHERE "Key" = '66aca41f-0d50-4a53-938a-2a1855cd8d82'; -- Retornar/Destrancar
+
+              UPDATE "FormaEntrada"
+              SET "ExibeCard" = true
+              WHERE "Key" = '21779510-3c1c-44b1-a40d-6d8180b0719d'; -- Reopção
+
+              UPDATE "FormaEntrada"
+              SET "ExibeCard" = true
+              WHERE "Key" = '9de4b05d-c4d6-4b51-9209-be73d2b3a984'; -- Vestibular Corporativo
+
+              UPDATE "FormaEntrada"
+              SET "ExibeCard" = true
+              WHERE "Key" = 'f0a0c8a1-1aff-4321-b33c-21cbe45309b3'; -- Vestibular Escolar
+
+              UPDATE "FormaEntrada"
+              SET "ExibeCard" = true
+              WHERE "Key" = '1fb70a23-8b36-4baf-a9ff-245339d568fa'; -- Tecnólogo

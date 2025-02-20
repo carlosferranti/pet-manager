@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: Remove constraint Not Null da coluna CidadeId na tabela Escola
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 1
+                sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'Escola' AND column_name = 'CidadeId'
+      changes:
+        - dropNotNullConstraint:
+            columnName:  CidadeId
+            tableName:  Escola

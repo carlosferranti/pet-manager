@@ -1,0 +1,31 @@
+databaseChangeLog:
+  - changeSet:
+      id: Adiciona coluna InstituicaoId na tabela Escola
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'Escola' AND column_name = 'InstituicaoId'
+      changes:
+        - addColumn:
+            schemaName: public
+            tableName: Escola
+            columns:
+              - column:
+                  constraints:
+                    nullable: true
+                  name: InstituicaoId
+                  type: integer
+        - addForeignKeyConstraint:
+            baseColumnNames: InstituicaoId
+            baseTableName: Escola
+            constraintName: FK_Escola_Instituicao_InstituicaoId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: Instituicao
+            validate: true

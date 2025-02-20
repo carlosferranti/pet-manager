@@ -1,0 +1,60 @@
+databaseChangeLog:
+  - changeSet:
+      id: "227865 - Realizar Carga Niveis Cursos faltantes"
+      author: Raoni
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 1
+            sql:  SELECT count(1) 
+                  FROM INFORMATION_SCHEMA.TABLES 
+                  WHERE TABLE_NAME = 'NivelCurso' 
+        - sqlCheck:
+            expectedResult: 1
+            sql:  SELECT count(1) 
+                  FROM INFORMATION_SCHEMA.TABLES 
+                  WHERE TABLE_NAME = 'IntegracaoNivel'
+      changes:
+        - sql:
+            sql: |
+                INSERT INTO public."NivelCurso"(
+                    "Nome", "Ativo", "Key", "CriadoEm", "AlteradoEm")
+                    VALUES ('Direito', true,  gen_uuid(), current_timestamp, current_timestamp);
+                      INSERT INTO public."IntegracaoNivel"("IntegracaoSistemaId", "CodigoOrigem", "NivelCursoId")
+                      VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '1046',  (select max("Id") from public."NivelCurso"));
+
+                INSERT INTO public."NivelCurso"(
+                    "Nome", "Ativo", "Key", "CriadoEm", "AlteradoEm")
+                    VALUES ('Educação Artística', true,  gen_uuid(), current_timestamp, current_timestamp);
+                      INSERT INTO public."IntegracaoNivel"("IntegracaoSistemaId", "CodigoOrigem", "NivelCursoId")
+                      VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '1129',  (select max("Id") from public."NivelCurso"));
+
+                INSERT INTO public."NivelCurso"(
+                    "Nome", "Ativo", "Key", "CriadoEm", "AlteradoEm")
+                    VALUES ('Português e Inglês do 2º Grau', true,  gen_uuid(), current_timestamp, current_timestamp);
+                      INSERT INTO public."IntegracaoNivel"("IntegracaoSistemaId", "CodigoOrigem", "NivelCursoId")
+                      VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '1155',  (select max("Id") from public."NivelCurso"));
+
+                INSERT INTO public."NivelCurso"(
+                    "Nome", "Ativo", "Key", "CriadoEm", "AlteradoEm")
+                    VALUES ('Direito Social', true,  gen_uuid(), current_timestamp, current_timestamp);
+                      INSERT INTO public."IntegracaoNivel"("IntegracaoSistemaId", "CodigoOrigem", "NivelCursoId")
+                      VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '655',  (select max("Id") from public."NivelCurso"));
+
+                INSERT INTO public."NivelCurso"(
+                    "Nome", "Ativo", "Key", "CriadoEm", "AlteradoEm")
+                    VALUES ('Psicologo', true,  gen_uuid(), current_timestamp, current_timestamp);
+                      INSERT INTO public."IntegracaoNivel"("IntegracaoSistemaId", "CodigoOrigem", "NivelCursoId")
+                      VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '676',  (select max("Id") from public."NivelCurso"));
+
+                INSERT INTO public."NivelCurso"(
+                    "Nome", "Ativo", "Key", "CriadoEm", "AlteradoEm")
+                    VALUES ('Psicológo', true,  gen_uuid(), current_timestamp, current_timestamp);
+                      INSERT INTO public."IntegracaoNivel"("IntegracaoSistemaId", "CodigoOrigem", "NivelCursoId")
+                      VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '683',  (select max("Id") from public."NivelCurso"));
+
+                INSERT INTO public."NivelCurso"(
+                    "Nome", "Ativo", "Key", "CriadoEm", "AlteradoEm")
+                    VALUES ('Direito Empresarial', true,  gen_uuid(), current_timestamp, current_timestamp);
+                      INSERT INTO public."IntegracaoNivel"("IntegracaoSistemaId", "CodigoOrigem", "NivelCursoId")
+                      VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '1157',  (select max("Id") from public."NivelCurso"));

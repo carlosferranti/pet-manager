@@ -1,0 +1,50 @@
+databaseChangeLog:
+  - changeSet:
+      id: "218787 - Criar Tabela IntegracaoAcessibilidade"
+      author: Raoni
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          tableExists:
+            tableName: IntegracaoAcessibilidade
+      changes:
+        - createTable:
+            tableName: IntegracaoAcessibilidade
+            columns:
+              - column:
+                  name: Id
+                  type: integer
+                  autoIncrement: true
+              - column:
+                  constraints:
+                    nullable: false
+                  name: IntegracaoSistemaId
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: CodigoOrigem
+                  type: character varying(100)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: AcessibilidadeId 
+                  type: integer
+        - addPrimaryKey:
+            tableName: IntegracaoAcessibilidade
+            columnNames: Id
+            constraintName: PK_IntegracaoAcessibilidade
+        -  addForeignKeyConstraint:
+            baseColumnNames: IntegracaoSistemaId
+            baseTableName: IntegracaoAcessibilidade
+            constraintName: FK_IntegracaoAcessibilidade_SistemaIntegracao_IntegracaoSistemaId
+            referencedColumnNames: Id
+            referencedTableName: SistemaIntegracao
+            onDelete: CASCADE
+        -  addForeignKeyConstraint:
+            baseColumnNames: AcessibilidadeId
+            baseTableName: IntegracaoAcessibilidade
+            constraintName: FK_IntegracaoAcessibilidade_Acessibilidade_AcessibilidadeId
+            referencedColumnNames: Id
+            referencedTableName: Acessibilidade
+            onDelete: CASCADE

@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: Atualiza forma de ingresso ENEM
+      author: Rafael
+      changes:
+        - sql:
+            sql: |
+              UPDATE "FormaEntrada" SET "Descricao" = 'Vamos buscar sua nota no MEC e retornaremos com o resultado! Importante saber que podemos utilizar sua maior nota nos últimos 10 anos.' WHERE "Key" = 'c97cab02-7905-49ae-8a75-39b28da142d1'

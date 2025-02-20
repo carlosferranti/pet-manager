@@ -1,0 +1,53 @@
+databaseChangeLog:
+  - changeSet:
+      id: 235633 - Criar Tabela IntegracaoCursoExterno
+      author: Raoni
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - tableExists:
+              tableName: CursoExterno
+          - not:
+              tableExists:
+                tableName: IntegracaoCursoExterno
+      changes:
+        - createTable:
+            tableName: IntegracaoCursoExterno
+            columns:
+              - column:
+                  name: Id
+                  type: integer
+                  autoIncrement: true
+              - column:
+                  constraints:
+                    nullable: false
+                  name: IntegracaoSistemaId
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: CodigoOrigem
+                  type: character varying(100)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: CursoExternoId 
+                  type: integer
+        - addPrimaryKey:
+            tableName: IntegracaoCursoExterno
+            columnNames: Id
+            constraintName: PK_IntegracaoCursoExterno
+        -  addForeignKeyConstraint:
+            baseColumnNames: IntegracaoSistemaId
+            baseTableName: IntegracaoCursoExterno
+            constraintName: FK_IntegracaoCursoExterno_SistemaIntegracao_IntegracaoSistemaId
+            referencedColumnNames: Id
+            referencedTableName: SistemaIntegracao
+            onDelete: RESTRICT
+        -  addForeignKeyConstraint:
+            baseColumnNames: CursoExternoId
+            baseTableName: IntegracaoCursoExterno
+            constraintName: FK_IntegracaoCursoExterno_CursoExterno_CursoExternoId
+            referencedColumnNames: Id
+            referencedTableName: CursoExterno
+            onDelete: RESTRICT

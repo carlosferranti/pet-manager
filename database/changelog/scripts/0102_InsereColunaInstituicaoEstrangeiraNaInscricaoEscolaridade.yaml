@@ -1,0 +1,21 @@
+databaseChangeLog:
+-  changeSet:
+    id: Altera a tabela InscricaoEscolaridade adicionando a coluna InstituicaoEstrangeira
+    author: Rafael
+    preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'InscricaoEscolaridade' AND column_name = 'InstituicaoEstrangeira'
+    changes:
+      - addColumn:
+          schemaName: public
+          tableName: InscricaoEscolaridade
+          columns:
+            - column:
+                constraints:
+                  nullable: false
+                name: InstituicaoEstrangeira 
+                type: boolean
+                defaultValue: false

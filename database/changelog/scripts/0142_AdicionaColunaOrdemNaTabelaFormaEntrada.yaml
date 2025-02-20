@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: Adiciona coluna OrdemExibicao na tabela FormaEntrada
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'FormaEntrada' AND column_name = 'OrdemExibicao'
+      changes:
+        - addColumn:
+            schemaName: public
+            tableName: FormaEntrada
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: OrdemExibicao
+                  type: integer
+                  defaultValue: 9999

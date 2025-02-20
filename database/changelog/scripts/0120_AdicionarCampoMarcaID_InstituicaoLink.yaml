@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: Alterar a tabela InstituicaoLink adicionando a coluna TipoCategoria
+      author: Jefferson
+      changes:
+        - addColumn:
+            schemaName: public
+            tableName: InstituicaoLink
+            columns:
+              - column:
+                  name: MarcaId
+                  type: integer
+        - addForeignKeyConstraint:
+            baseTableName: InstituicaoLink
+            baseColumnNames: MarcaId
+            constraintName: fk_MarcaId
+            referencedTableName: Marca
+            referencedColumnNames: Id

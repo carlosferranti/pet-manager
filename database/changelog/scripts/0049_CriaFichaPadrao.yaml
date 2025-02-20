@@ -1,0 +1,846 @@
+databaseChangeLog:
+  - changeSet:
+      id: Insere ficha padrão
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM public."Ficha"
+                      WHERE "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f';
+      changes:
+        - insert:
+            schemaName: public
+            tableName: Ficha
+            columns:
+              - column:
+                  name: Nome
+                  value: Ficha graduação v2
+              - column:
+                  name: Descricao
+                  value: Ficha graduação v2
+              - column:
+                  name: Padrao
+                  value: true
+              - column:
+                  name: Ativo
+                  value: true
+              - column:
+                  name: Key
+                  value: ccd55148-9748-40dc-9333-44603b9e395f
+              - column:
+                  name: CriadoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp
+  - changeSet:
+      id: Insere etapa Dados iniciais
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM public."EtapaTemplate"
+                      WHERE "Key" = '2f8c9dee-8565-42a2-8668-a27061f48258';
+      changes:
+        - insert:
+            schemaName: public
+            tableName: EtapaTemplate
+            columns:
+              - column:
+                  name: Nome
+                  value: Dados iniciais
+              - column:
+                  name: Descricao
+                  value: Dados iniciais
+              - column:
+                  name: NomeArquivo
+                  value: DadosIniciais.txt
+              - column:
+                  name: Ativo
+                  value: true
+              - column:
+                  name: Key
+                  value: 2f8c9dee-8565-42a2-8668-a27061f48258
+              - column:
+                  name: CriadoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp
+  - changeSet:
+      id: Insere etapa Carreira
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM public."EtapaTemplate"
+                      WHERE "Key" = 'd7d555fe-7b4b-4b95-983a-b7676c3072ef';
+      changes:
+        - insert:
+            schemaName: public
+            tableName: EtapaTemplate
+            columns:
+              - column:
+                  name: Nome
+                  value: Carreira
+              - column:
+                  name: Descricao
+                  value: Carreira
+              - column:
+                  name: NomeArquivo
+                  value: Carreira.txt
+              - column:
+                  name: Ativo
+                  value: true
+              - column:
+                  name: Key
+                  value: d7d555fe-7b4b-4b95-983a-b7676c3072ef
+              - column:
+                  name: CriadoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp
+  - changeSet:
+      id: Insere etapa Tipo de entrada
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM public."EtapaTemplate"
+                      WHERE "Key" = '1f1ebff4-8a4b-42f3-bea7-b64d8211518b';
+      changes:
+        - insert:
+            schemaName: public
+            tableName: EtapaTemplate
+            columns:
+              - column:
+                  name: Nome
+                  value: Tipo de entrada
+              - column:
+                  name: Descricao
+                  value: Tipo de entrada
+              - column:
+                  name: NomeArquivo
+                  value: TipoEntrada.txt
+              - column:
+                  name: Ativo
+                  value: true
+              - column:
+                  name: Key
+                  value: 1f1ebff4-8a4b-42f3-bea7-b64d8211518b
+              - column:
+                  name: CriadoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp
+  - changeSet:
+      id: Insere etapa Dados adicionais
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM public."EtapaTemplate"
+                      WHERE "Key" = 'a9af4a67-7866-431e-b764-d57534404c8c';
+      changes:
+        - insert:
+            schemaName: public
+            tableName: EtapaTemplate
+            columns:
+              - column:
+                  name: Nome
+                  value: Dados adicionais
+              - column:
+                  name: Descricao
+                  value: Dados adicionais
+              - column:
+                  name: NomeArquivo
+                  value: TipoEntrada.txt
+              - column:
+                  name: Ativo
+                  value: true
+              - column:
+                  name: Key
+                  value: a9af4a67-7866-431e-b764-d57534404c8c
+              - column:
+                  name: CriadoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp
+  - changeSet:
+      id: Insere etapa Dados iniciais na ficha
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM public."EtapaFicha"
+                      WHERE "EtapaTemplateId" = (select "Id" from public."EtapaTemplate" where "Key" = '2f8c9dee-8565-42a2-8668-a27061f48258') and
+                            "FichaId" = (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f');
+      changes:
+        - insert:
+            schemaName: public
+            tableName: EtapaFicha
+            columns:
+              - column:
+                  name: EtapaTemplateId
+                  valueComputed: (select "Id" from public."EtapaTemplate" where "Key" = '2f8c9dee-8565-42a2-8668-a27061f48258')
+              - column:
+                  name: Sequencia
+                  value: 1
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+  - changeSet:
+      id: Insere etapa Carreira na ficha
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM public."EtapaFicha"
+                      WHERE "EtapaTemplateId" = (select "Id" from public."EtapaTemplate" where "Key" = 'd7d555fe-7b4b-4b95-983a-b7676c3072ef') and
+                            "FichaId" = (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f');
+      changes:
+        - insert:
+            schemaName: public
+            tableName: EtapaFicha
+            columns:
+              - column:
+                  name: EtapaTemplateId
+                  valueComputed: (select "Id" from public."EtapaTemplate" where "Key" = 'd7d555fe-7b4b-4b95-983a-b7676c3072ef')
+              - column:
+                  name: Sequencia
+                  value: 2
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+  - changeSet:
+      id: Insere etapa Tipo de entrada na ficha
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM public."EtapaFicha"
+                      WHERE "EtapaTemplateId" = (select "Id" from public."EtapaTemplate" where "Key" = '1f1ebff4-8a4b-42f3-bea7-b64d8211518b') and
+                            "FichaId" = (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f');
+      changes:
+        - insert:
+            schemaName: public
+            tableName: EtapaFicha
+            columns:
+              - column:
+                  name: EtapaTemplateId
+                  valueComputed: (select "Id" from public."EtapaTemplate" where "Key" = '1f1ebff4-8a4b-42f3-bea7-b64d8211518b')
+              - column:
+                  name: Sequencia
+                  value: 3
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+  - changeSet:
+      id: Insere etapa Dados adicionais na ficha
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM public."EtapaFicha"
+                      WHERE "EtapaTemplateId" = (select "Id" from public."EtapaTemplate" where "Key" = 'a9af4a67-7866-431e-b764-d57534404c8c') and
+                            "FichaId" = (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f');
+      changes:
+        - insert:
+            schemaName: public
+            tableName: EtapaFicha
+            columns:
+              - column:
+                  name: EtapaTemplateId
+                  valueComputed: (select "Id" from public."EtapaTemplate" where "Key" = 'a9af4a67-7866-431e-b764-d57534404c8c')
+              - column:
+                  name: Sequencia
+                  value: 4
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+  - changeSet:
+      id: Insere campos na ficha padrão
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM public."CampoFicha"
+                      WHERE "FichaId" = (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f');
+      changes:
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = '653f9540-5969-49f9-a58e-848c46a22970')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: true
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: false
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = '3618e685-06d2-4808-9074-d5fd336d9381')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: true
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: false
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = '4800b026-9eca-47ff-924c-3aa0d1c3cb41')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: true
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: false
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = '188ff630-40e7-4782-8b9e-bf2b546bb368')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: true
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: false
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = '2c1835dc-3432-4856-8a52-7a512626b7bd')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: true
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: false
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = '240fce63-550e-430e-9e6b-6bd88482af6d')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: false
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: false
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = '52168ca5-9d88-4418-a026-17707cf997dc')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: true
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: false
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = 'ad149454-03ac-4882-9abd-1389aa9c7929')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: false
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: false
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = '6d52e967-ac4b-4bee-9e77-082840135a55')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: false
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: false
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = '077dffab-1451-41ed-857c-67cde1442307')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: false
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: false
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = 'dea00f18-4902-4bb1-a136-42bf38ec75f2')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: false
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: false
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = '5a516ed2-a015-499e-8b85-857490e71ca9')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: false
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: false
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = '937b40d2-6d50-458f-8d71-78b3658ea7c4')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: false
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: false
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = '2e21e063-308f-4161-9bb8-4902ce1acba1')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: false
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: false
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = '43c099ad-56c7-4e21-b088-fc3dda8ebe9a')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: false
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: true
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = '60db41e2-6044-46d9-996c-d30f702de226')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: false
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: true
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = 'e0209e6c-bdd7-480f-9597-1c8f71fe5e43')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: false
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: true
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = '344c6f93-c9ef-441e-898a-d191fadf26c0')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: false
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: true
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = 'b0f49894-f58e-41cf-8a92-f9e883586557')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: false
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: true
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = 'a86a0b3c-e12d-45b8-84ba-d538b5c64fba')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: false
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: true
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = '79832e1a-ad6e-4a68-9dde-f88ea6a539e9')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: false
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: true
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = '233d8aa4-ac1a-4a23-8e86-41f0cc0e7dd1')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: false
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: true
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = 'cd7b6693-3620-4e1d-8649-ab3df708f5db')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: false
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: true
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = 'c1f731ce-0cc1-42f7-925d-ce98b13f49c5')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: false
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: true
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = 'aac7df00-58b0-43c1-b03a-36c9a6ecc3bf')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: false
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: true
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = '1e8d358d-0855-4efe-ab20-7347017a4514')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: false
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: true
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = '802dfc39-7e27-48e4-8400-92df6d3242bf')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: false
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: true
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = '63490620-d5e6-4500-859f-d79c839f851f')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: false
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: true
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = 'ad21735d-6def-48b2-ad37-79d7b346e81a')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: false
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: true
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = '1e226c7f-15e4-4b58-98c9-c5ea1f1e29ee')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: false
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: true
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = 'ef3da55a-1c20-4752-9a05-432d7cd01816')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: false
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: false
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = '5e5bf672-ee77-40a6-a7ac-7ca7276c67c7')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: false
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: true
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = '589673c2-f317-47b2-af04-6cfa0b5fcae7')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: false
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: false
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = '589673c2-f317-47b2-af04-6cfa0b5fcae7')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: false
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: false

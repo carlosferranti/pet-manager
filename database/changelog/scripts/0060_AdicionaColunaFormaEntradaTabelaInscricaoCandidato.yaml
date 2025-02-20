@@ -1,0 +1,31 @@
+databaseChangeLog:
+-  changeSet:
+    id: Alterar a tabela InscricaoCandidato adicionando a coluna FormaEntradaId
+    author:  Rafael
+    preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'InscricaoCandidato' AND column_name = 'FormaEntradaId'
+    changes:
+      - addColumn:
+          schemaName: public
+          tableName: InscricaoCandidato
+          columns:
+            - column:
+                constraints:
+                  nullable: true
+                name: FormaEntradaId
+                type: integer
+      - addForeignKeyConstraint:
+          baseColumnNames: FormaEntradaId
+          baseTableName: InscricaoCandidato
+          constraintName: FK_InscricaoCandidato_FormaEntrada_FormaEntradaId
+          deferrable: false
+          initiallyDeferred: false
+          onDelete: RESTRICT
+          onUpdate: NO ACTION
+          referencedColumnNames: Id
+          referencedTableName: FormaEntrada
+          validate: true

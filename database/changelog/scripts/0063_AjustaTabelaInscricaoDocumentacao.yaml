@@ -1,0 +1,114 @@
+databaseChangeLog:
+-  changeSet:
+    id: Alterar a tabela InscricaoDocumentacao adicionando a coluna Ativo
+    author:  Rafael
+    preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'InscricaoDocumentacao' AND column_name = 'Ativo'
+    changes:
+      - addColumn:
+          schemaName: public
+          tableName: InscricaoDocumentacao
+          columns:
+            - column:
+                constraints:
+                  nullable: false
+                name: Ativo 
+                type: boolean
+                defaultValue: true
+-  changeSet:
+    id: Alterar a tabela InscricaoDocumentacao adicionando a coluna CriadoEm
+    author:  Rafael
+    preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'InscricaoDocumentacao' AND column_name = 'CriadoEm'
+    changes:
+      - addColumn:
+          schemaName: public
+          tableName: InscricaoDocumentacao
+          columns:
+            - column:
+                constraints:
+                  nullable: false
+                name: CriadoEm
+                type: TIMESTAMP WITH TIME ZONE
+                defaultValueComputed: now()
+-  changeSet:
+    id: Alterar a tabela InscricaoDocumentacao adicionando a coluna AlteradoEm
+    author:  Rafael
+    preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'InscricaoDocumentacao' AND column_name = 'AlteradoEm'
+    changes:
+      - addColumn:
+          schemaName: public
+          tableName: InscricaoDocumentacao
+          columns:
+            - column:
+                constraints:
+                  nullable: false
+                name: AlteradoEm
+                type: TIMESTAMP WITH TIME ZONE
+                defaultValueComputed: now()
+-  changeSet:
+    id: Alterar a tabela InscricaoDocumentacao removendo a coluna LocalArquivo
+    author:  Rafael
+    preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 1
+                sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'InscricaoDocumentacao' AND column_name = 'LocalArquivo'
+    changes:
+      - dropColumn:
+          columns:
+            - column:
+                name: LocalArquivo
+          tableName: InscricaoDocumentacao
+-  changeSet:
+    id: Alterar a tabela InscricaoDocumentacao adicionando a coluna TipoLocalArquivo
+    author:  Rafael
+    preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'InscricaoDocumentacao' AND column_name = 'TipoLocalArquivo'
+    changes:
+      - addColumn:
+          schemaName: public
+          tableName: InscricaoDocumentacao
+          columns:
+            - column:
+                constraints:
+                  nullable: false
+                name: TipoLocalArquivo
+                type: integer
+-  changeSet:
+    id: Alterar a tabela InscricaoDocumentacao adicionando a coluna ChaveArquivo
+    author:  Rafael
+    preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'InscricaoDocumentacao' AND column_name = 'ChaveArquivo'
+    changes:
+      - addColumn:
+          schemaName: public
+          tableName: InscricaoDocumentacao
+          columns:
+            - column:
+                constraints:
+                  nullable: false
+                name: ChaveArquivo
+                type: varchar(100)

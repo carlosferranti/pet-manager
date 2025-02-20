@@ -4,10 +4,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "database", "database", "{7D792915-E46A-460D-9223-2871F347FE3D}"
+	ProjectSection(SolutionItems) = preProject
+		..\database\docker-compose.yaml = ..\database\docker-compose.yaml
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FB82DC01-BBA9-4F41-829A-FD5004BAD1CA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{F76FC8C6-E6DA-4CD1-8380-900FADAB3FEE}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\deploy\Deployment-AzureDevOps.yml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\deploy\Deployment-AzureDevOps.yml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\deploy\Dockerfile = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\deploy\Dockerfile
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pet.Manager.Application", "Pet.Manager.Application\Pet.Manager.Application.csproj", "{174BAE85-6B1A-4F20-973B-B1CF9F9296C8}"
 EndProject
@@ -26,6 +33,205 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pet.Manager.IoC", "Pet.Manager.IoC\Pet.Manager.IoC.csproj", "{A81D2188-D42E-4551-8817-9199F96C85B7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pet.Manager.Test", "Pet.Manager.Test\Pet.Manager.Test.csproj", "{28C827CC-86F3-4625-895C-9CCA14B5EAA8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pet.Manager", "Pet.Manager\Pet.Manager.csproj", "{A0332FA3-DA22-43F4-B882-CC6643AEDFCF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{D95642A9-04D2-4CB9-897A-C1F0B5620D3C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pet.Manager.ArchTests", "..\tests\Pet.Manager.ArchTests\Pet.Manager.ArchTests.csproj", "{31DA4AA5-419B-474C-A5EF-B26E1164CB49}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pet.Manager.Test", "..\tests\Pet.Manager.Test\Pet.Manager.Test.csproj", "{BE8566D5-BB11-49D9-AF99-4CC8A37BBD3C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "changelog", "changelog", "{D4E53B09-3EFE-4F27-B07A-76AE3464D250}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\liquibase.properties = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\liquibase.properties
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\master.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\master.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\postgresql-42.5.1.redhat-00001.jar = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\postgresql-42.5.1.redhat-00001.jar
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{7263FE13-BE88-4208-A9D7-3EBB7782E1C2}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0000_CriacaoDeTabelas.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0000_CriacaoDeTabelas.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0001_CriaFuncaoGenUuid.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0001_CriaFuncaoGenUuid.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0002_InsereSistemasIntegracao.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0002_InsereSistemasIntegracao.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0003_InsereTurnos.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0003_InsereTurnos.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0004_InsereFormasEntrada.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0004_InsereFormasEntrada.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0005_InsereTipoFormacao.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0005_InsereTipoFormacao.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0006_InsereModalidade.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0006_InsereModalidade.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0007_InsereCampus.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0007_InsereCampus.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0008_PermissaoTabela.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0008_PermissaoTabela.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0009_CriaTabelaMarca.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0009_CriaTabelaMarca.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0010_CriaTabelaNivelCurso.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0010_CriaTabelaNivelCurso.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0011_CriaTabelaCupom.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0011_CriaTabelaCupom.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0012_PermissaoTabelas.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0012_PermissaoTabelas.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0013_InsereAutoIncremento.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0013_InsereAutoIncremento.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0014_PermissaoTabelas.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0014_PermissaoTabelas.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0015_InsereMarcas.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0015_InsereMarcas.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0016_InsereInstituicao.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0016_InsereInstituicao.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0017_CriarTabelaAcessibilidade.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0017_CriarTabelaAcessibilidade.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0018_CriarTabelaIntegracaoAcessibilidade.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0018_CriarTabelaIntegracaoAcessibilidade.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0019_PermissaoTabelas.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0019_PermissaoTabelas.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0020_RealizarCargaAcessibilidade.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0020_RealizarCargaAcessibilidade.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0021_RemoveConstraintsNotNullInscricao.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0021_RemoveConstraintsNotNullInscricao.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0022_CriaTabelaDeficiencia.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0022_CriaTabelaDeficiencia.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0023_RealizaCargaDeficiencias.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0023_RealizaCargaDeficiencias.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0024_PermissaoTabelas.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0024_PermissaoTabelas.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0025_CriarTabelaIntegracaoInscricao.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0025_CriarTabelaIntegracaoInscricao.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0026_PermissaoTabelas.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0026_PermissaoTabelas.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0027_RealizarCargaPais.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0027_RealizarCargaPais.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0028_RealizarCargaEstados.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0028_RealizarCargaEstados.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0029_CriaTabelaCampo.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0029_CriaTabelaCampo.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0030_CriaTabelaCampoFicha.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0030_CriaTabelaCampoFicha.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0031_RemoveColunaVoucherNaTabelaInscricao.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0031_RemoveColunaVoucherNaTabelaInscricao.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0032_RenomeiaTabelasDeRelacaoComInscicao.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0032_RenomeiaTabelasDeRelacaoComInscicao.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0033_CriaTabelaInscricaoCupom.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0033_CriaTabelaInscricaoCupom.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0034_CriaTabelaInscricaoAcessibilidade.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0034_CriaTabelaInscricaoAcessibilidade.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0035_CriaTabelaInscricaoDeficiencia.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0035_CriaTabelaInscricaoDeficiencia.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0036_CriaTabelaInscricaoEscolaridade.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0036_CriaTabelaInscricaoEscolaridade.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0037_InsereCampos.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0037_InsereCampos.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0038_PermissaoTabelas.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0038_PermissaoTabelas.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0039_AlteraLimiteCaracteresNomeNivelCurso.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0039_AlteraLimiteCaracteresNomeNivelCurso.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0040_InsereNivelCurso.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0040_InsereNivelCurso.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0041_RemoveConstraintsNotNullValidadeCupom.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0041_RemoveConstraintsNotNullValidadeCupom.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0042_InserirNiveisFaltantes.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0042_InserirNiveisFaltantes.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0043_RealizarCargaCidades.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0043_RealizarCargaCidades.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0044_AdicionaSalesforceComoSistemaIntegrador.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0044_AdicionaSalesforceComoSistemaIntegrador.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0044_RemoverColunaCodigoTipoEscola.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0044_RemoverColunaCodigoTipoEscola.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0045_CriaTabelaInscricaoOrigem.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0045_CriaTabelaInscricaoOrigem.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0045_RemoverObrigatoriedadeCodigoInep.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0045_RemoverObrigatoriedadeCodigoInep.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0046_RealizarCargaEscolasParte1.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0046_RealizarCargaEscolasParte1.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0047_PermissaoTabelas.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0047_PermissaoTabelas.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0047_RealizarCargaEscolasParte2.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0047_RealizarCargaEscolasParte2.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0048_RealizarCargaEscolasParte3.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0048_RealizarCargaEscolasParte3.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0049_CriaFichaPadrao.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0049_CriaFichaPadrao.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0050_InsereNovasFormasDeEntrada.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0050_InsereNovasFormasDeEntrada.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0051_InsereNovaModalidade.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0051_InsereNovaModalidade.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0052_DeletarDadosAcessibilidade.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0052_DeletarDadosAcessibilidade.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0053_InserirDadosAcessibilidade.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0053_InserirDadosAcessibilidade.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0054_UpdateInativarDeficiencia.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0054_UpdateInativarDeficiencia.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0055_InserirDeficiencia.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0055_InserirDeficiencia.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0056_CriarTabelaDeficienciaAcessibilidade.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0056_CriarTabelaDeficienciaAcessibilidade.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0057_InserirDadosDeficienciaAcessibilidade.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0057_InserirDadosDeficienciaAcessibilidade.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0058_PermissaoTabelas.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0058_PermissaoTabelas.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0059_AjustesNasFormasDeEntrada.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0059_AjustesNasFormasDeEntrada.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0060_AdicionaColunaFormaEntradaTabelaInscricaoCandidato.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0060_AdicionaColunaFormaEntradaTabelaInscricaoCandidato.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0061_RemoveColunasDeArquivosDaTabelaInscricaoAcessibilidade.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0061_RemoveColunasDeArquivosDaTabelaInscricaoAcessibilidade.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0062_RemoveColunasDeArquivosDaTabelaInscricaoDeficiencia.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0062_RemoveColunasDeArquivosDaTabelaInscricaoDeficiencia.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0063_AjustaTabelaInscricaoDocumentacao.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0063_AjustaTabelaInscricaoDocumentacao.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0064_RealizarCargaIntegracaoMarcaSalesforce.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0064_RealizarCargaIntegracaoMarcaSalesforce.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0065_CriaTabelaInscricaoOrigem.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0065_CriaTabelaInscricaoOrigem.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0066_PermissaoTabelas.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0066_PermissaoTabelas.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0067_InsereCampoFormaEntrada.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0067_InsereCampoFormaEntrada.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0068_AdicionaColunaInstituicaoTabelaCurso.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0068_AdicionaColunaInstituicaoTabelaCurso.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0069_InsereSistemaIntegradorSiaf.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0069_InsereSistemaIntegradorSiaf.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0070_AtualizaIntegracoesParaSistemaSiaf.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0070_AtualizaIntegracoesParaSistemaSiaf.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0071_AtualizaDescricaoFormaEntrada.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0071_AtualizaDescricaoFormaEntrada.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0072_RemoveObrigatoriedadesTabelaInscricaoEscolaridade.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0072_RemoveObrigatoriedadesTabelaInscricaoEscolaridade.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0073_AdicionarPropriedadeNomeComercialTabelaCampus.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0073_AdicionarPropriedadeNomeComercialTabelaCampus.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0074_AdicionarPropriedadeNomeComercialTabelaCampus.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0074_AdicionarPropriedadeNomeComercialTabelaCampus.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0075_CriarTabelaCursoExterno.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0075_CriarTabelaCursoExterno.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0076_CriarTabelaIntegracaoCursoExterno.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0076_CriarTabelaIntegracaoCursoExterno.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0077_PermissaoTabelas.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0077_PermissaoTabelas.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0078_RealizarCargaCursosExternos.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0078_RealizarCargaCursosExternos.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0079_CriaTabelaEmpresa.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0079_CriaTabelaEmpresa.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0080_InsereEmpresas.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0080_InsereEmpresas.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0081_PermissaoTabelas.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0081_PermissaoTabelas.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0082_CriaTabelaIntegracaoConcursoFormaProva.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0082_CriaTabelaIntegracaoConcursoFormaProva.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0083_CriaTabelaOfertaConcursoOpcaoAcesso.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0083_CriaTabelaOfertaConcursoOpcaoAcesso.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0084_CriaTabelaInscricaoOpcaoAcesso.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0084_CriaTabelaInscricaoOpcaoAcesso.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0085_PermissaoTabelas.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0085_PermissaoTabelas.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0086_CriaTabelaInscricaoEmpresa.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0086_CriaTabelaInscricaoEmpresa.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0087_PermissaoTabelas.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0087_PermissaoTabelas.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0088_AdicionarColunasTabelaInscricaoEscolaridade.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0088_AdicionarColunasTabelaInscricaoEscolaridade.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0089_NormalizarNomesDeficiencias.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0089_NormalizarNomesDeficiencias.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0090_CriarTabelaLinkInstituicao.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0090_CriarTabelaLinkInstituicao.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0091_PermissaoTabelas.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0091_PermissaoTabelas.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0092_PermissaoTabelasNovas.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0092_PermissaoTabelasNovas.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0093_InativaCidades.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0093_InativaCidades.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0094_CorrigeEmpresas.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0094_CorrigeEmpresas.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0095_ExcluiRegistroDeEscolas.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0095_ExcluiRegistroDeEscolas.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0096_CriaColunaCategoriaEscola.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0096_CriaColunaCategoriaEscola.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0097_InsereEscolasParte1.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0097_InsereEscolasParte1.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0098_InsereEscolasParte2.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0098_InsereEscolasParte2.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0099_InsereEscolasParte3.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0099_InsereEscolasParte3.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0100_InsereEscolasParte4.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0100_InsereEscolasParte4.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0101_InsereColunaPercentualNaTabelaInscricaoOpcaoAcesso.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0101_InsereColunaPercentualNaTabelaInscricaoOpcaoAcesso.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0102_InsereColunaInstituicaoEstrangeiraNaInscricaoEscolaridade.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0102_InsereColunaInstituicaoEstrangeiraNaInscricaoEscolaridade.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0103_AtualizaDescricaoFormaEntradaRetorno.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0103_AtualizaDescricaoFormaEntradaRetorno.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0104_PadronizarNomeTabelaInstituicaoLink.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0104_PadronizarNomeTabelaInstituicaoLink.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0105_PadronizarNomeColuns.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0105_PadronizarNomeColuns.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0106_PermissaoTabelas.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0106_PermissaoTabelas.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0107_RemoveIndexIntegracaoFormaEntrada.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0107_RemoveIndexIntegracaoFormaEntrada.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0108_InsereIntegracaoFormaEntrada.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0108_InsereIntegracaoFormaEntrada.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0109_CriaTabelaMatricula.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0109_CriaTabelaMatricula.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0110_CriaTabelaInscricaoMatricula.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0110_CriaTabelaInscricaoMatricula.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0111_PermissaoTabelas.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0111_PermissaoTabelas.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0112_InserirIntegracaoInstituicoes.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0112_InserirIntegracaoInstituicoes.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0113_CorrigeFormaEntradaSegundaGraduacao.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0113_CorrigeFormaEntradaSegundaGraduacao.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0114_AtualizaDescricaoFormaEntradaReopcao.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0114_AtualizaDescricaoFormaEntradaReopcao.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0115_InsereEscolasParte1.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0115_InsereEscolasParte1.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0116_InsereEscolasParte2.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0116_InsereEscolasParte2.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0117_InsereEscolasParte3.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0117_InsereEscolasParte3.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0118_InativaEscolasDuplicadas.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0118_InativaEscolasDuplicadas.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0119_AtualizaCidadeEscolas.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0119_AtualizaCidadeEscolas.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0120_AdicionarCampoMarcaID_InstituicaoLink.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0120_AdicionarCampoMarcaID_InstituicaoLink.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0121_RemocaoCampoInstituicaoIdInstituicaoLink.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0121_RemocaoCampoInstituicaoIdInstituicaoLink.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0122_InsereDescricaoModalidade.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0122_InsereDescricaoModalidade.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0123_ApagaCampus.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0123_ApagaCampus.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0124_InativaRegistros.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0124_InativaRegistros.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0125_InativarDeficienciaEAcessibilidadeNaoUtilizada.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0125_InativarDeficienciaEAcessibilidadeNaoUtilizada.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0126_InativaEstado.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0126_InativaEstado.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0127_ExcluiEscolas.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0127_ExcluiEscolas.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0128_NovaCargaEscolasParte1.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0128_NovaCargaEscolasParte1.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0129_NovaCargaEscolasParte2.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0129_NovaCargaEscolasParte2.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0130_NovaCargaEscolasParte3.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0130_NovaCargaEscolasParte3.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0131_NovaCargaEscolasParte4.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0131_NovaCargaEscolasParte4.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0132_NovaCargaEscolasParte5.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0132_NovaCargaEscolasParte5.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0133_NovaCargaEscolasParte6.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0133_NovaCargaEscolasParte6.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0134_AlteraColunaCidadeTabelaEscola.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0134_AlteraColunaCidadeTabelaEscola.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0135_NovaCargaEscolasEnsinoSuperior.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0135_NovaCargaEscolasEnsinoSuperior.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0136_InativaEscolasDuplicadas.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0136_InativaEscolasDuplicadas.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0137_AtualizaCidadeEscolas.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0137_AtualizaCidadeEscolas.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0138_InsereIntegracaoAcessibilidade.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0138_InsereIntegracaoAcessibilidade.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0139_InsereIntegracaoLactanteAdventista.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0139_InsereIntegracaoLactanteAdventista.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0140_PermissaoTabelasUsuarioSalesforce.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0140_PermissaoTabelasUsuarioSalesforce.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0141_PermissaoTabelasUsuarioSmartshare.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0141_PermissaoTabelasUsuarioSmartshare.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0142_AdicionaColunaOrdemNaTabelaFormaEntrada.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0142_AdicionaColunaOrdemNaTabelaFormaEntrada.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0143_AtualizaFormaEntradaInserindoOrdem.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0143_AtualizaFormaEntradaInserindoOrdem.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0144_AtualizaCargaEscolasEnsinoSuperior.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0144_AtualizaCargaEscolasEnsinoSuperior.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0145_AtualizaCargaEscolasEnsinoSuperiorCodigoOrigemSiaf.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0145_AtualizaCargaEscolasEnsinoSuperiorCodigoOrigemSiaf.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0146_CriaTabelaModalidadeAvaliacao.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0146_CriaTabelaModalidadeAvaliacao.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0147_AdicionaColunaModalidadeAvaliacaoConcurso.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0147_AdicionaColunaModalidadeAvaliacaoConcurso.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0148_InsereModalidadeAvaliacao.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0148_InsereModalidadeAvaliacao.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0149_PermissaoTabelas.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0149_PermissaoTabelas.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0150_CriaTabelaLink.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0150_CriaTabelaLink.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0151_CriaTabelaLinkFormaEntrada.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0151_CriaTabelaLinkFormaEntrada.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0152_InsereLinks.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0152_InsereLinks.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0153_InsereLinkFormaEntrada.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0153_InsereLinkFormaEntrada.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0154_PermissaoTabelas.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0154_PermissaoTabelas.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0155_AtualizaDescricaoFormaEntradaReopcao.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0155_AtualizaDescricaoFormaEntradaReopcao.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0156_CriaTabelaInscricaoFiliacao.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0156_CriaTabelaInscricaoFiliacao.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0157_PermissaoTabelas.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0157_PermissaoTabelas.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0158_AdicionaColunasFormaEntrada.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0158_AdicionaColunasFormaEntrada.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0159_AtualizaValorExibeFormaEntrada.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0159_AtualizaValorExibeFormaEntrada.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0160_InsereNovasFormasEntrada.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0160_InsereNovasFormasEntrada.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0161_CriaTabelaInscricaoFormaEntrada.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0161_CriaTabelaInscricaoFormaEntrada.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0162_InsereFormaEntradaInscricao.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0162_InsereFormaEntradaInscricao.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0163_ApagaColunaFormaEntradaTabelaInscricao.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0163_ApagaColunaFormaEntradaTabelaInscricao.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0164_PermissaoTabelas.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0164_PermissaoTabelas.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0165_AdicionaColunaInstituicaoIdTabelaEscola.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0165_AdicionaColunaInstituicaoIdTabelaEscola.yaml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0166_AtualizaCargaEscolasSuperiores.sql = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0166_AtualizaCargaEscolasSuperiores.sql
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0167_RenomeiaColunaFormaIngressoPai.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\database\changelog\scripts\0167_RenomeiaColunaFormaIngressoPai.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "catalog", "catalog", "{C42A9CE1-D3BD-4049-9848-BDD99CE50C44}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "apis", "apis", "{EF5FF4BA-1B25-4FC7-9884-9ADF1F870B56}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pet-manager-api", "pet-manager-api", "{58206FB8-5F24-434A-8014-F45DCA8EC77F}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\catalog\apis\servico-inscricao-api\catalog-info.yaml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\catalog\apis\servico-inscricao-api\catalog-info.yaml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +275,18 @@ Global
 		{28C827CC-86F3-4625-895C-9CCA14B5EAA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28C827CC-86F3-4625-895C-9CCA14B5EAA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28C827CC-86F3-4625-895C-9CCA14B5EAA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0332FA3-DA22-43F4-B882-CC6643AEDFCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0332FA3-DA22-43F4-B882-CC6643AEDFCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0332FA3-DA22-43F4-B882-CC6643AEDFCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0332FA3-DA22-43F4-B882-CC6643AEDFCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31DA4AA5-419B-474C-A5EF-B26E1164CB49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31DA4AA5-419B-474C-A5EF-B26E1164CB49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31DA4AA5-419B-474C-A5EF-B26E1164CB49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31DA4AA5-419B-474C-A5EF-B26E1164CB49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE8566D5-BB11-49D9-AF99-4CC8A37BBD3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE8566D5-BB11-49D9-AF99-4CC8A37BBD3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE8566D5-BB11-49D9-AF99-4CC8A37BBD3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE8566D5-BB11-49D9-AF99-4CC8A37BBD3C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -83,6 +301,13 @@ Global
 		{EF1F278A-4555-4A56-9B8D-201BC0B9E79A} = {FB82DC01-BBA9-4F41-829A-FD5004BAD1CA}
 		{A81D2188-D42E-4551-8817-9199F96C85B7} = {FB82DC01-BBA9-4F41-829A-FD5004BAD1CA}
 		{28C827CC-86F3-4625-895C-9CCA14B5EAA8} = {FB82DC01-BBA9-4F41-829A-FD5004BAD1CA}
+		{A0332FA3-DA22-43F4-B882-CC6643AEDFCF} = {FB82DC01-BBA9-4F41-829A-FD5004BAD1CA}
+		{31DA4AA5-419B-474C-A5EF-B26E1164CB49} = {D95642A9-04D2-4CB9-897A-C1F0B5620D3C}
+		{BE8566D5-BB11-49D9-AF99-4CC8A37BBD3C} = {D95642A9-04D2-4CB9-897A-C1F0B5620D3C}
+		{D4E53B09-3EFE-4F27-B07A-76AE3464D250} = {7D792915-E46A-460D-9223-2871F347FE3D}
+		{7263FE13-BE88-4208-A9D7-3EBB7782E1C2} = {D4E53B09-3EFE-4F27-B07A-76AE3464D250}
+		{EF5FF4BA-1B25-4FC7-9884-9ADF1F870B56} = {C42A9CE1-D3BD-4049-9848-BDD99CE50C44}
+		{58206FB8-5F24-434A-8014-F45DCA8EC77F} = {EF5FF4BA-1B25-4FC7-9884-9ADF1F870B56}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CE4EDFCE-FC02-4F9F-8655-20DB403189AE}

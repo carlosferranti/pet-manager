@@ -1,0 +1,37 @@
+databaseChangeLog:
+  - changeSet:
+      id: "228152 - Adicionar Salesforce como Sistema Integrador"
+      author: Raoni
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 1
+                sql:  SELECT count(1)
+                      FROM information_schema.tables
+                      WHERE table_name = 'SistemaIntegracao';
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM public."SistemaIntegracao"
+                      WHERE "Nome" = 'Salesforce';
+      changes:
+        - insert:
+            schemaName: public
+            tableName: SistemaIntegracao
+            columns:
+              - column:
+                  name: Key
+                  value: 6992417d-2d97-4541-a16b-7be4a2136443
+              - column:
+                  name: Nome
+                  value: Salesforce
+              - column:
+                  name: Ativo
+                  value: true
+              - column:
+                  name: CriadoEm
+                  valueComputed: current_timestamp 
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp 

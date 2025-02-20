@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: Alterar a tabela InstituicaoLink removendo a coluna InstituicaoId
+      author: Jefferson
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: "InstituicaoLink"
+            constraintName: "FK_LinkInstituicao_Instituicao_IdInstituicao"
+        - dropColumn:
+            tableName: "InstituicaoLink"
+            columnName: "InstituicaoId"            

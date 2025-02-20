@@ -1,0 +1,63 @@
+databaseChangeLog:
+  - changeSet:
+      id: Insere modalidade avaliação Presencial
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM public."Ficha"
+                      WHERE "Key" = '76f15f1a-e319-490d-a7ef-f63063ddf3cd';
+      changes:
+        - insert:
+            schemaName: public
+            tableName: ModalidadeAvaliacao
+            columns:
+              - column:
+                  name: Nome
+                  value: Presencial
+              - column:
+                  name: Ativo
+                  value: true
+              - column:
+                  name: Key
+                  value: 76f15f1a-e319-490d-a7ef-f63063ddf3cd
+              - column:
+                  name: CriadoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp
+  - changeSet:
+      id: Insere modalidade avaliação On-line
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM public."Ficha"
+                      WHERE "Key" = 'a5e9b5e4-60fa-4257-94c3-e788088d7e63';
+      changes:
+        - insert:
+            schemaName: public
+            tableName: ModalidadeAvaliacao
+            columns:
+              - column:
+                  name: Nome
+                  value: On-line
+              - column:
+                  name: Ativo
+                  value: true
+              - column:
+                  name: Key
+                  value: a5e9b5e4-60fa-4257-94c3-e788088d7e63
+              - column:
+                  name: CriadoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp

@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: Insere forma de entrada Inscrição
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 1
+                sql:  SELECT count(1) FROM information_schema.tables WHERE table_name = 'InscricaoFormaEntrada'
+          - sqlCheck:
+                expectedResult: 1
+                sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'InscricaoCandidato' AND column_name = 'FormaEntradaId'
+      changes:
+        - sql:
+            sql: |
+
+              INSERT INTO "InscricaoFormaEntrada"
+                ("InscricaoCandidatoId", "FormaEntradaId", "CriadoEm", "AlteradoEm", "CodigoTipoSelecao", "Atual")
+              SELECT "Id", "FormaEntradaId", current_timestamp, current_timestamp, 'Manual', true
+              FROM "InscricaoCandidato"
+              WHERE "FormaEntradaId" IS NOT NULL

@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: Inativa registros errados 
+      author: Rafael
+      changes:
+        - sql:
+            sql: |
+              UPDATE public."Estado"
+              SET "Ativo" = false
+              WHERE upper("Nome") like '%INATIVO%';
+
+              UPDATE public."Escola"
+              SET "Ativo" = false
+              WHERE upper("Nome") like '%INATIVO%';
+
+              update "Estado" 
+              set "Ativo" = false
+              where "PaisId" = (select "Id" from "Pais" where "Key" = '70770647-3354-45b8-b6c2-35b8de7e821c')
+              and "Nome" in ('NÃO INFORMADO', 'Moçambique', 'Estados Unidos', 'Equador', 'INATIVORio de Janeiro', 'A Definir', 'Brasil', 'MARANHÃO  ');

@@ -1,0 +1,132 @@
+databaseChangeLog:
+  - changeSet:
+      id: Cria tabela NivelCurso
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM information_schema.tables
+                      WHERE table_name = 'NivelCurso';
+      changes:
+        - createTable:
+            tableName: NivelCurso
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                  name: Id
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Nome
+                  type: varchar(100)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Ativo 
+                  type: boolean
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Key
+                  type: uuid
+              - column:
+                  constraints:
+                    nullable: false
+                  name: CriadoEm
+                  type: TIMESTAMP WITH TIME ZONE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: AlteradoEm
+                  type: TIMESTAMP WITH TIME ZONE
+  - changeSet:
+      id: Cria tabela IntegracaoNivel
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM information_schema.tables
+                      WHERE table_name = 'IntegracaoNivel';
+      changes:
+        - createTable:
+            tableName: IntegracaoNivel
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                  name: Id
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: IntegracaoSistemaId
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: CodigoOrigem
+                  type: varchar(100)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: NivelCursoId 
+                  type: integer
+        - addForeignKeyConstraint:
+            baseColumnNames: NivelCursoId
+            baseTableName: IntegracaoNivel
+            constraintName: FK_IntegracaoNivel_NivelCurso_NivelCursoId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: NivelCurso
+            validate: true
+        - addForeignKeyConstraint:
+            baseColumnNames: IntegracaoSistemaId
+            baseTableName: IntegracaoNivel
+            constraintName: FK_IntegracaoNivel_SistemaIntegracao_IntegracaoSistemaId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: SistemaIntegracao
+            validate: true
+  - changeSet:
+      id: Insere coluna NivelCursoId na tabela Curso
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          columnExists:
+            tableName: Curso
+            columnName: NivelCursoId
+      changes:
+        - addColumn:
+            tableName: Curso
+            columns:
+              - column:
+                  name: NivelCursoId
+                  type: int
+        - addForeignKeyConstraint:
+            baseColumnNames: NivelCursoId
+            baseTableName: Curso
+            constraintName: FK_Curso_NivelCurso_NivelCursoId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: NivelCurso
+            validate: true

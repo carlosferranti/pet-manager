@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: Insere descrição das modalidades
+      author: Rafael
+      changes:
+        - sql:
+            sql: |
+                  update "Modalidade"
+                  set "Descricao" = 'Aulas presenciais com seus colegas e professores e possibilidade do uso de tecnologia em algumas atividades.'
+                  where "Nome" = 'Presencial';
+
+                  update "Modalidade"
+                  set "Descricao" = 'Combinação entre aulas online com uso intensivo de tecnologia e algumas aulas presenciais.'
+                  where "Nome" = 'Semipresencial';
+
+                  update "Modalidade"
+                  set "Descricao" = 'Estude por meio de aulas online em horários determinados com possibilidade de interação ao vivo com professores e estudantes.'
+                  where "Nome" = 'Live';

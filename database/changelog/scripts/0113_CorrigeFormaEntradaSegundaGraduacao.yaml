@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: Corrige nome da forma entrada Segunda Graduação
+      author: Rafael
+      changes:
+        - sql:
+            sql: |
+                  update "FormaEntrada"
+                  set "Nome" = 'Segunda Graduação'
+                  where "Key" = '3ebb6e4a-195e-466f-9278-606cb368596a';

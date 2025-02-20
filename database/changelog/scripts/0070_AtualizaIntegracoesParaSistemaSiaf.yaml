@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: Atualiza integrações de instituição para SIAF
+      author: Rafael
+      changes:
+        - sql:
+            sql: |
+              UPDATE "IntegracaoInstituicao" SET "IntegracaoSistemaId" = (select "Id" from "SistemaIntegracao" where "Nome" = 'SIAF')
+  - changeSet:
+      id: Atualiza integrações de curso para SIAF
+      author: Rafael
+      changes:
+        - sql:
+            sql: |
+              UPDATE "IntegracaoCurso" SET "IntegracaoSistemaId" = (select "Id" from "SistemaIntegracao" where "Nome" = 'SIAF')

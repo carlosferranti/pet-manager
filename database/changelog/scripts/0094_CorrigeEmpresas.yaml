@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: Corrige empresas
+      author: Rafael
+      changes:
+        - sql:
+            sql: |
+                  update "Empresa"
+                  set "NomeFantasia" = rtrim(ltrim("NomeFantasia")),
+                      "RazaoSocial" = rtrim(ltrim("RazaoSocial"));
+                    
+                  update "EmpresaEndereco"
+                  set "Logradouro" = rtrim(ltrim("Logradouro")),
+                      "Cep" = rtrim(ltrim("Cep")),
+                      "Complemento" = rtrim(ltrim("Complemento")),
+                      "Bairro" = rtrim(ltrim("Bairro"));
+              

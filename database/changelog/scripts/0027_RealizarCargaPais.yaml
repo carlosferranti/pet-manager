@@ -1,0 +1,1368 @@
+databaseChangeLog:
+  - changeSet:
+      id: "225474 - Realizar Carga Paises"
+      author: Raoni
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 1
+            sql:  SELECT count(1) 
+                  FROM INFORMATION_SCHEMA.TABLES 
+                  WHERE TABLE_NAME = 'Pais' 
+        - sqlCheck:
+            expectedResult: 1
+            sql:  SELECT count(1) 
+                  FROM INFORMATION_SCHEMA.TABLES 
+                  WHERE TABLE_NAME = 'IntegracaoPais'
+      changes:
+        - sql:
+            sql: |
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Brasil', 'BRA', 'BR', 'F', true, '70770647-3354-45b8-b6c2-35b8de7e821c', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '1',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Argentina', 'ARG', 'AR', 'U', true, '102549c3-1897-4ff3-bb75-fd2c1d253f14', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '2',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Bolívia', 'BOL', 'BO', 'U', true, 'cd217d1e-530f-4d05-b54f-2c1e6046e2b6', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '3',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Uruguai', 'URY', 'UY', 'U', true, '5e8a61b4-8e74-4856-839c-cd442fd07076', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '4',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Chile', 'CHL', 'CL', 'U', true, '1464a966-7dfb-4bf9-bbf5-7573486ad4f9', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '5',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('China', 'CHN', 'CN', 'F', true, 'eceba7c5-7658-4555-b905-b3868e92c82d', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '6',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Estados Unidos', 'USA', 'US', 'F', true, 'c03669c5-fc01-4828-b509-4cb876737978', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '7',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Paraguai', 'PRY', 'PY', 'U', true, '58f8e017-ff58-4eb9-b319-82abdba14619', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '8',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Alemanha', 'DEU', 'DE', 'U', true, '7b1b50d8-e030-4bf8-8eb1-ae95bf3e4b85', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '9',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Espanha', 'ESP', 'ES', 'F', true, 'b8761ec1-57d7-462a-b520-9c6e9202a528', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '10',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Inglaterra', 'GBR', 'GB', 'U', true, '6e8be669-bc44-46e0-83a7-4a3cdd3164f8', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '11',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('México', 'MEX', 'MX', 'F', true, 'f3c4400e-00ea-454f-86fd-49faaddac8b7', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '12',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Arábia Saudita', 'SAU', 'SA', 'F', true, '6aaa5aa6-ee06-4f75-9770-d881ec747698', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '13',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Suíça', 'CHE', 'CH', 'F', true, '384b5109-275e-4481-bda9-7b128b1cdd7f', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '14',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Itália', 'ITA', 'IT', 'U', true, '2893d245-5bed-44ab-8279-81df3eeccabe', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '15',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Bélgica', 'BEL', 'BE', 'U', true, '70a2366d-6979-4b0b-b81f-d5804d283c56', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '16',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Iraque', 'IRQ', 'IQ', 'U', true, 'b8bedf0a-5279-48e5-b3ec-94f4435f3acf', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '22',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Canadá', 'CAN', 'CA', 'U', true, '1894adca-0a4d-437a-ab92-e364733c10a8', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '26',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Peru', 'PER', 'PE', 'U', true, '03e20313-450c-4b05-8983-c088f5c19bbd', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '36',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Austrália', 'AUS', 'AU', 'F', true, '022fa3a4-c1f3-40a9-bdc7-9941e1fb3717', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '41',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Japão', 'JPN', 'JP', 'F', true, 'c14fcc44-158c-430f-ac03-ad176d2583c6', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '46',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Portugal', 'PRT', 'PT', 'U', true, 'ab9ccee0-cc7c-4502-a458-a20faca59bed', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '51',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Nova Zelândia', 'NZL', 'NZ', 'F', true, 'adc8b2d4-075d-4904-ad7c-07e64b68c15b', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '57',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Maurício', 'MUS', 'MU', 'F', true, 'aa7be06e-440d-4f03-a80f-70a1fa6ddade', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '61',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('França', 'FRA', 'FR', 'U', true, 'c966a5a1-3a4f-4e20-90be-ad84613d5617', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '66',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Irã', 'IRN', 'IR', 'F', true, 'ce8addb0-fa66-4d60-890f-5eb42de17fe1', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '71',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Corea', 'CO', 'CO', 'F', true, '1b4614e2-1597-428d-bacc-6aa65ee8edfe', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '83',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Angola', 'AGO', 'AO', 'U', true, '912c3c9d-c355-485b-8bfc-64b13e4e03a1', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '86',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Rússia (antiga URSS) - Federação Russa', 'RUS', 'RU', 'F', true, '4bb98102-2d07-43f2-9d38-34b197cca185', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '91',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Colômbia', 'COL', 'CO', 'U', true, 'dcacfcc6-77f8-4d63-b7bf-d4ce58daa1b0', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '96',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Guiné-Bissau', 'GNB', 'GW', 'F', true, 'e006b3f1-e22b-4d29-8fe5-a5ef381f1c08', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '101',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Panamá', 'PAN', 'PA', 'F', true, 'de01f917-e575-4f98-b6d1-2409c9f2890f', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '126',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Dinamarca', 'DNK', 'DK', 'F', true, '918c1cb6-87e0-498a-a7ac-c6bc330be5f3', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '127',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Holanda', 'NLD', 'NL', 'F', true, 'a30ba3d9-0602-49e8-bff9-48a1e388f5c2', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '129',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Moçambique', 'MOZ', 'MZ', 'U', true, '22737a19-fd13-485b-99c6-959a507c33bb', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '130',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('El Salvador', 'SLV', 'SV', 'F', true, '0e3f393c-4787-46aa-a86d-7bbd59b92b14', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '131',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Cabo Verde', 'CPV', 'CV', 'F', true, '3ff08781-4ef6-4665-bf6c-47e610c58517', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '132',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Venezuela', 'VEN', 'VE', 'F', true, '87d8d05e-d5a6-48ae-a8cd-c6ddb5802139', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '133',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('África do Sul', 'ZAF', 'ZA', 'F', true, '2a03ff22-d93a-4f4c-b94f-7e2a6a04e0ba', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '134',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Israel', 'ISR', 'IL', 'U', true, 'ed64023f-52d4-4e11-b34e-31bc0f32d3c4', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '136',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Cuba', 'CUB', 'CU', 'U', true, '0809feb9-7548-4d47-9cda-f9c18a8bbcc4', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '138',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Colônia Portuguesa', 'CP', 'CP', 'U', true, '019c2fd3-79fb-4199-80d1-8deae2be83a3', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '139',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Ucrânia', 'UKR', 'UA', 'U', true, '8731c013-33f2-4e0d-8cba-aeeaa264b654', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '140',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Áustria', 'AUT', 'AT', 'U', true, '1913661d-5d31-4e83-9a92-88efa1f63d36', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '143',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Reino Unido', 'UK', 'UK', 'U', true, '95fdd581-c449-43f6-8c60-64229e9b4f64', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '144',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Costa Rica', 'CRI', 'CR', 'U', true, 'f34a0a1f-22c3-402f-982a-6c1fed39b876', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '146',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Escócia', 'Es', 'Es', 'U', true, '0ad99f66-953c-4d26-a256-f177cec13750', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '155',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Hungria', 'HUN', 'HU', 'U', true, 'ca05cb24-b650-4381-9023-1c4243e37c86', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '147',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Nigéria', 'NGA', 'NG', 'U', true, 'b52e9148-a88c-4bd0-88cf-6fb8b216ae7b', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '154',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Polônia', 'POL', 'PL', 'F', true, 'f2b3afa1-8150-4ae9-a0f8-50a715ba4682', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '156',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Bahamas', 'BHS', 'BS', 'U', true, 'd5b277f8-1e15-4425-8a43-464715769404', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '153',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Turquia', 'TUR', 'TR', 'F', true, '850cf233-444d-4245-ba36-d197e44ebbb3', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '157',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Coréia do Sul', 'KOR', 'KR', 'F', true, '58d4cd64-dfd0-4b94-990d-e729430d8c37', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '188',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('NICARAGUA', '2', '2', 'F', true, 'f39e7baa-2dba-4950-8ed0-dc1026e6087f', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '192',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Taiwan', 'TWN', 'TW', 'F', true, '2cee5b4a-9b31-4daf-bc79-11487fcc5174', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '222',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Líbano', 'LBN', 'LB', 'U', true, '7fdb34d4-324f-42c4-8e95-b6e39d3e7681', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '158',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('NÃO INFORMADO', 'NI', 'NI', 'F', true, 'bfe6ef0c-cde3-4a3a-aafd-d220ae6d8233', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '160',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Grã-Bretanha', 'GB', 'GB', 'U', true, 'd8129708-350a-4d2e-b563-9147794a507d', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '212',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Suécia', 'SWE', 'SE', 'F', true, '0950a199-0118-4681-8af5-531bea6c5530', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '179',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Nicarágua', 'NIC', 'NI', 'F', true, '1dc45517-3885-44f5-8fe6-1ef4dd5b730d', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '216',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('filipinas', 'Ph', 'Ph', 'U', true, '92a3c917-30e0-4471-9f10-2ec9cbcfbe7d', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '217',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Filipinas', 'PHL', 'PH', 'U', true, 'e83d520b-8f66-4e32-95eb-d6fd635b046d', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '220',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Portugual', 'prt', 'prt', 'F', true, '18b30a37-a0a4-4781-8aed-190d021b6db9', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '181',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('A definir', 'a d', 'a d', 'F', true, 'edc448f3-e69c-45e6-a03b-b4d57f330686', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '214',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Ilhas Cocos', 'CCK', 'CC', 'U', true, '04aa80de-a50b-42e2-9a81-deff699091f7', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '221',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Senegal', 'SEN', 'SN', 'F', true, '08543cbd-0314-4f07-a268-0a24a981c3a0', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '234',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Irlanda', 'IRL', 'IE', 'U', true, 'bc124547-66b1-4d41-b6ac-c3397483fd07', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '235',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('São Cristóvão e Névis', 'KNA', 'KN', 'F', true, '21a2e4ae-97ba-45ec-90af-e9b7adab0e12', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '393',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('São Martim', 'MAF', 'MF', 'F', true, '3189c7a4-3c4b-46f3-8be1-e4635fb24fab', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '394',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('São Tomé e Príncipe', 'STP', 'ST', 'F', true, 'ff86462b-b68a-48c8-a9ea-ccc2d0558ab0', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '395',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Serra Leoa', 'SLE', 'SL', 'F', true, '089bafad-48d5-4e9d-8932-21144c85bb8b', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '396',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Sérvia', 'SRB', 'RS', 'F', true, '12c66247-cbd0-450e-9036-247d81ab541b', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '397',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Síria', 'SYR', 'SY', 'F', true, '98afe555-2994-42d4-a840-94d9728a7740', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '398',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Somália', 'SOM', 'SO', 'F', true, 'd7c3bbe2-245c-4b0f-80b0-5538b8dbb852', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '399',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Sri Lanka', 'LKA', 'LK', 'F', true, 'c8698f7d-79b5-4979-a4b3-7f07ee0e53ce', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '400',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('St. Pierre and Miquelon', 'SPM', 'PM', 'F', true, 'a76afcd0-708e-42a6-ada5-1544b27aa56d', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '401',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Suazilândia', 'SWZ', 'SZ', 'F', true, '474c47a9-2d4e-4f0a-9c73-9ce0d6c7e84f', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '402',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Sudão', 'SDN', 'SD', 'F', true, '3bd6da4c-b6ce-4ce5-a714-5cb7e68f9be0', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '403',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Suriname', 'SUR', 'SR', 'F', true, '6294f11c-2f34-4e8f-91b8-5fc1939c5c4e', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '404',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Tadjiquistão', 'TJK', 'TJ', 'F', true, '2c31f941-3bb3-439b-acc3-efb5535aed4e', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '405',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Tailândia', 'THA', 'TH', 'F', true, '47704449-cfd6-4db3-aafe-526fbda1e0f2', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '406',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Tanzânia', 'TZA', 'TZ', 'F', true, '9be7c786-8add-4bdf-9a2e-78c989a9c8c5', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '407',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Território Britânico do Oceano índico', 'IOT', 'IO', 'F', true, 'a83b5932-231e-4835-956a-82655ab1a4e8', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '408',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Territórios do Sul da França', 'ATF', 'TF', 'F', true, 'df7e898f-1a15-4654-8e79-d2e3f55e753d', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '409',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Territórios Palestinos Ocupados', 'PSE', 'PS', 'F', true, 'da580164-643b-406e-8292-5e261ff21529', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '410',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Timor-Leste', 'TLS', 'TP', 'F', true, 'bab5156a-8a79-40b2-a425-8dfebe2d5edf', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '411',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Togo', 'TGO', 'TG', 'F', true, '7b95e592-3fe0-4c5d-b9e7-bc7554033809', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '412',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Tonga', 'TON', 'TO', 'F', true, '131bea1e-c27a-4315-ac5f-cc0e25ca3abc', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '413',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Trinidad and Tobago', 'TTO', 'TT', 'F', true, '568ccf03-0148-44ce-aeda-0509b52d0102', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '414',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Tunísia', 'TUN', 'TN', 'F', true, 'c6e805e2-2460-4911-85f2-12e474baf5ae', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '415',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Turcomenistão', 'TKM', 'TM', 'F', true, 'af337c9f-22c6-49e6-9bcc-bc37c05105f7', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '416',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Tuvalu', 'TUV', 'TV', 'F', true, 'ba373781-b825-4f75-88b6-2bc5c6ebe4ac', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '417',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Uganda', 'UGA', 'UG', 'F', true, 'd567f4c8-faa9-4257-be16-584772c15ee5', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '418',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Uzbequistão', 'UZB', 'UZ', 'F', true, 'c64e1ddd-5930-4f3f-8140-a7a5cd933636', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '419',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Vanuatu', 'VUT', 'VU', 'F', true, 'fcd33c45-a22b-4aa1-8389-07bcd40d5851', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '420',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Vaticano', 'VAT', 'VA', 'F', true, 'e938c9de-7099-4f86-a25c-85afdcbd46d4', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '421',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Vietnã', 'VNM', 'VN', 'F', true, 'e95b4685-0ef6-4015-9447-1e665aae6b0b', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '422',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Zâmbia', 'ZMB', 'ZM', 'F', true, '6f5f9a6f-a137-4b5a-a595-f083cc28fd5e', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '423',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Zimbábue', 'ZWE', 'ZW', 'F', true, '17f8296d-5fea-443f-8186-2db8470bb4c0', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '424',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Russia', 'URS', 'URS', 'F', true, '3a6e6851-099f-45ce-8df7-8fa55c6d1fca', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '425',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Indefinida', 'in', 'in', 'U', true, 'd3f01e27-8af4-406b-8c66-b82a6ce1c4cd', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '427',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('EUA', 'EUA', 'EUA', 'F', true, '67ac1000-f312-431f-b1a1-bdd38b197d94', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '429',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Afeganistão', 'AFG', 'AF', 'F', true, 'c40d94df-c7ed-4cc2-b2f7-f1a1f3bafcba', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '236',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Albânia', 'ALB', 'AL', 'F', true, '51170b89-6cb2-430e-88dc-bba2fc66698d', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '237',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Andorra', 'AND', 'AD', 'F', true, 'cbfa5857-20ea-47f8-bb36-d4c8aa9bd813', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '238',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Anguilla', 'AIA', 'AI', 'F', true, '51cd0e23-be0d-44b3-baf8-684a664f372d', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '239',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Antártida', 'ATA', 'AQ', 'F', true, '0458c877-1b48-431a-8ae3-26eb649a5880', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '240',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Antígua e Barbuda', 'ATG', 'AG', 'F', true, '75dcddda-3093-4186-a680-b4a082fe0d4e', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '241',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Antilhas Holandesas', 'ANT', 'AN', 'F', true, '23bc68fa-9fb9-4baa-a2b6-c21828467dd8', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '242',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Argélia', 'DZA', 'DZ', 'F', true, '563ee61c-b5d6-4e9f-bb4e-a89dbb1bcc68', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '243',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Armênia', 'ARM', 'AM', 'F', true, '5727d4f0-6fbd-49de-9807-acf96d496da3', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '244',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Aruba', 'ABW', 'AW', 'F', true, 'adaf0346-d7f1-4c9b-8eb6-255fe5eaff44', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '245',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Azerbaijão', 'AZE', 'AZ', 'F', true, '562e5556-afc5-46c4-8e67-3c19ec271f99', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '246',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Bahrein', 'BHR', 'BH', 'F', true, '09521597-9b50-483c-b758-659ef79be3df', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '247',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Bangladesh', 'BGD', 'BD', 'F', true, '4abc5106-332a-4634-9234-7bf83b188ea2', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '248',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Barbados', 'BRB', 'BB', 'F', true, 'e126a966-e72c-45d1-a0fc-5c13ac4f64ea', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '249',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Belarus', 'BLR', 'BY', 'F', true, '080c1c1f-d888-4543-acc2-5ed9390f2480', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '250',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Belize', 'BLZ', 'BZ', 'F', true, '16a8dc94-b009-45cb-a937-be76a9567008', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '251',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Benin', 'BEN', 'BJ', 'F', true, '819b8c99-7039-4d8a-9134-136e350ae7a0', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '252',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Bermudas', 'BMU', 'BM', 'F', true, '4754212a-2544-4940-8cfa-0666f322f723', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '253',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Bósnia-Herzegóvina', 'BIH', 'BA', 'F', true, '9f3d1950-0e18-4619-9206-f6ce4e3631e9', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '254',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Botsuana', 'BWA', 'BW', 'F', true, 'bba98ddb-85e5-49db-8091-a79a4d783278', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '255',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Brunei', 'BRN', 'BN', 'F', true, '0d6af5f4-9fd1-49d2-9cbf-7808a3938480', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '256',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Bulgária', 'BGR', 'BG', 'F', true, '9c858372-c8d5-4be7-aed1-b697efadaa01', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '257',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Burkina Fasso', 'BFA', 'BF', 'F', true, '49aea6b7-0247-4a8f-904c-dade7c412741', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '258',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Burundi', 'BDI', 'BI', 'F', true, '707c22ce-48f9-41d0-bb80-966feac7b7c8', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '259',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Butão', 'BTN', 'BT', 'F', true, 'cfdb27a3-2a67-427b-a1da-191d4d583475', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '260',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Camarões', 'CMR', 'CM', 'F', true, '70c6f3f6-cc35-44ee-b092-e9b3c151a421', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '261',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Camboja', 'KHM', 'KH', 'F', true, '54732bb7-aed0-4f71-a845-bb19edaa82c3', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '262',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Cazaquistão', 'KAZ', 'KZ', 'F', true, '42f99bbf-79f1-4a65-a4e2-aacb4c2e0091', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '263',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Chade', 'TCD', 'TD', 'F', true, '828b22fa-c6a7-449d-8587-6af45f87291a', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '264',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Chipre', 'CYP', 'CY', 'F', true, '376471a6-4c1d-4cda-9af4-9c818c8f2fc7', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '265',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Cingapura', 'SGP', 'SG', 'F', true, 'be64965e-67ed-48b2-ab63-6016553bbd06', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '266',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Congo', 'COG', 'CG', 'F', true, 'f78b89e3-b359-42b4-ba9b-1dbd068987a9', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '267',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Coréia do Norte', 'PRK', 'KP', 'F', true, '4d49bb10-c904-41be-9ad6-6bf6b1f95e6f', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '268',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Costa do Marfim', 'CIV', 'CI', 'F', true, '30954f17-67f1-4bba-bdaf-bce8a8896732', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '269',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Croácia', 'HRV', 'HR', 'F', true, '05424afd-d017-42d6-86a3-6dc30a475cbb', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '270',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Djibuti', 'DJI', 'DJ', 'F', true, '42ac60c4-8b24-4bce-831c-35b7981e6670', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '271',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Dominica', 'DMA', 'DM', 'F', true, '9b696fdd-f382-4f87-93c5-e5c0ee5224a4', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '272',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Egito', 'EGY', 'EG', 'F', true, '02626d4e-cc39-4e09-87cc-c7a6e3c920c8', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '273',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Emirados Árabes Unidos', 'ARE', 'AE', 'F', true, '248ca26d-5624-46f1-9c52-2e5c9fdbbece', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '274',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Equador', 'ECU', 'EC', 'F', true, 'c31bd6e1-6fbe-4022-bce4-22c624c094a9', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '275',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Eritréia', 'ERI', 'ER', 'F', true, 'd97dcc1b-c7f0-40c9-8a5d-eaee9964af4c', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '276',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Eslováquia', 'SVK', 'SK', 'F', true, 'bc7596a8-5743-42a4-b14a-57cb1c1fad53', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '277',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Eslovênia', 'SVN', 'SI', 'F', true, '59ffd225-9cd7-4ef1-8cfa-93da84432153', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '278',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Estônia', 'EST', 'EE', 'F', true, '99d0f72c-50ed-4a4a-a6c3-1e62e1f6ccdf', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '279',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Etiópia', 'ETH', 'ET', 'F', true, 'ee4ec911-2c62-4416-848a-4de56ba56226', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '280',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Fiji', 'FJI', 'FJ', 'F', true, '6988e79f-9654-4e2e-96e3-d11740255719', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '281',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Finlândia', 'FIN', 'FI', 'F', true, '194bd561-9a72-48e1-a201-35eedb1b702b', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '282',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Gabão', 'GAB', 'GA', 'F', true, '292e78b3-fcd8-4d28-a1ec-a7c3a32f618a', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '283',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Gâmbia', 'GMB', 'GM', 'F', true, 'f70acbf1-4150-48ba-b9b7-55f5850a106e', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '284',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Gana', 'GHA', 'GH', 'F', true, '582c2da0-8ba4-45e5-b16a-89bf123678a7', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '285',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Geórgia', 'GEO', 'GE', 'F', true, '81b95a41-94ad-46de-8ba9-c69fd0a7d819', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '286',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Gibraltar', 'GIB', 'GI', 'F', true, '0c5036b8-38ca-45e0-b37a-0e4dc137b3ed', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '287',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Granada', 'GRD', 'GD', 'F', true, '3bbdd60f-e0c7-4603-b88c-b28f29981445', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '288',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Grécia', 'GRC', 'GR', 'F', true, '6bca2b9b-e603-442c-933c-c17ca7ee2545', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '289',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Groelândia', 'GRL', 'GL', 'F', true, '3f2d4fb8-d634-4a41-bf10-65c9d4127390', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '290',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Guadalupe', 'GLP', 'GP', 'F', true, 'f0e000e5-f756-4d11-9e67-582e6d9816d3', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '291',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Guam (Território dos Estados Unidos)', 'GUM', 'GU', 'F', true, 'd3afbbc6-f064-4ee1-939c-1dbd36d12e24', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '292',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Guatemala', 'GTM', 'GT', 'F', true, '3db0d799-2b7a-4dcc-82bf-ffe52c91b3b1', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '293',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Guernsey', 'GGY', 'G', 'F', true, '36368424-7bfc-4d58-82d9-9a2cd2b2c0ed', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '294',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Guiana', 'GUY', 'GY', 'F', true, '3d3096f8-1c57-48e4-ad3a-fbcbb7f93c06', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '295',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Guiana Francesa', 'GUF', 'GF', 'F', true, '1d989aac-5563-48d7-ae70-10744deab6b1', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '296',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Guiné', 'GIN', 'GN', 'F', true, '0c3d6d96-7597-40a1-ab66-28ccca80fcd3', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '297',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Guiné Equatorial', 'GNQ', 'GQ', 'F', true, '425502a7-e337-48b5-8230-8ce32555b1eb', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '298',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Haiti', 'HTI', 'HT', 'F', true, 'eb51e976-a0b3-46f7-8ee6-10cf4bf3c2a8', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '299',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Honduras', 'HND', 'HN', 'F', true, '17401ce3-563d-4781-9910-443ade916c83', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '300',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Hong Kong', 'HKG', 'HK', 'F', true, '770dd0e0-c75a-4801-b9e6-e2e800d61a5d', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '301',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Iêmen', 'YEM', 'YE', 'F', true, 'f4afc373-3423-4648-a294-7ba301c378a0', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '302',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Ilha Bouvet (Território da Noruega)', 'BVT', 'BV', 'F', true, 'abb109fc-f1c4-46b2-a5ed-95957ca32fab', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '303',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Ilha do Homem', 'IMN', 'IM', 'F', true, 'c53e79e5-e9e4-4c2d-a3d9-706a76deae1a', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '304',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Ilha Natal', 'CXR', 'CX', 'F', true, 'a580cfcb-9fce-400f-beb8-4db93b6824c0', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '305',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Ilha Pitcairn', 'PCN', 'PN', 'F', true, 'ecdfd218-96ed-417e-a916-081bb31083c5', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '306',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Ilha Reunião', 'REU', 'RE', 'F', true, '6a4a537d-5ebe-4ca2-a0c0-e7c79465f837', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '307',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Ilhas Aland', 'ALA', 'AX', 'F', true, '0245a192-44e2-41ca-9010-18fd8aacb6a9', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '308',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Ilhas Cayman', 'CYM', 'KY', 'F', true, '62a2f578-5ae2-4fc6-986d-786d1fdf9983', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '309',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Ilhas Comores', 'COM', 'KM', 'F', true, '3deb245c-8f54-475e-8317-955a908049d4', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '310',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Ilhas Cook', 'COK', 'CK', 'F', true, '056b8c00-76f3-48a7-bbe4-6de761062fcd', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '311',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Ilhas Faroes', 'FRO', 'FO', 'F', true, '45b30032-a74c-4dfc-8d0c-faa4d0e38292', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '312',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Ilhas Falkland (Malvinas)', 'FLK', 'FK', 'F', true, '68189c1c-fb02-4d60-bb94-2f19d016df61', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '313',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Ilhas Geórgia do Sul e Sandwich do Sul', 'SGS', 'GS', 'F', true, '7367a80a-7376-473e-a2a3-a85e9e63aee1', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '314',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Ilhas Heard e McDonald (Território da Austrália)', 'HMD', 'HM', 'F', true, '5b801675-8acf-40ee-8a0e-7f6b080c1da1', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '315',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Ilhas Marianas do Norte', 'MNP', 'MP', 'F', true, '42d2ea4e-c83a-4ff6-a754-8e445f2ef0df', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '316',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Ilhas Marshall', 'MHL', 'MH', 'F', true, '2f624c7f-a525-49fd-bb83-dac235702b8d', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '317',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Ilhas Menores dos Estados Unidos', 'UMI', 'UM', 'F', true, 'c3c49b39-b33f-491a-97e5-7672512d29cd', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '318',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Ilhas Norfolk', 'NFK', 'NF', 'F', true, '22e6a910-0fc4-4634-a2e4-494dbcfbee01', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '319',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Ilhas Seychelles', 'SYC', 'SC', 'F', true, 'e32f4823-cdbf-4f8f-b5e0-8768cb1f33b4', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '320',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Ilhas Solomão', 'SLB', 'SB', 'F', true, 'cba734c3-cf5f-43ad-af53-d7c985ec0665', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '321',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Ilhas Svalbard e Jan Mayen', 'SJM', 'SJ', 'F', true, '3c3c96f4-0820-4616-af4f-068963b449a3', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '322',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Ilhas Tokelau', 'TKL', 'TK', 'F', true, 'f0da18c6-0016-4aef-a97e-646620330402', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '323',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Ilhas Turks e Caicos', 'TCA', 'TC', 'F', true, 'ef210cb2-d71e-4872-9f5f-9fa3ea88d099', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '324',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Ilhas Virgens (Estados Unidos)', 'VIR', 'VI', 'F', true, '01939b80-c149-4758-bd55-b2b2735bfd2e', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '325',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Ilhas Virgens (Inglaterra)', 'VGB', 'VG', 'F', true, 'ee72b700-5e74-4d8e-aa9c-f12f005e3727', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '326',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Ilhas Wallis e Futuna', 'WLF', 'WF', 'F', true, '64886cb4-aee2-485c-a4eb-8ce1f0f57d33', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '327',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Índia', 'IND', 'IN', 'F', true, '4a203579-80d5-4ef1-a606-f6682204f23a', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '328',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Indonésia', 'IDN', 'ID', 'F', true, 'd54f9d47-36c7-480b-8344-18b207bd916a', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '329',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Islândia', 'ISL', 'IS', 'F', true, '5f7dc4cc-5fb2-45a3-a431-f830faedf80b', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '330',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Jamaica', 'JAM', 'JM', 'F', true, '26325660-1537-464a-9883-17b2c9d5a411', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '331',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Jersey', 'JEY', 'JE', 'F', true, 'a80c82bc-dfa7-4512-b53e-dbb8d3383053', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '332',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Jordânia', 'JOR', 'JO', 'F', true, '94cd8ef5-640e-40c7-8259-f778a339dd39', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '333',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Kênia', 'KEN', 'KE', 'F', true, 'a4aeb5fc-3e0d-4301-832c-b6b29df3efa5', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '334',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Kiribati', 'KIR', 'KI', 'F', true, 'ad33eb86-7784-4d44-b534-46395939d64b', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '335',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Kuait', 'KWT', 'KW', 'F', true, 'b3700c00-6f75-4090-89cf-2a399c52488e', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '336',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Laos', 'LAO', 'LA', 'F', true, '696f120d-a1a1-4914-ac92-33e923af0c49', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '337',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Látvia', 'LVA', 'LV', 'F', true, '633dc6c0-ac49-474e-b9ec-5af282b8cb97', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '338',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Lesoto', 'LSO', 'LS', 'F', true, '670b0ef0-6d57-41ff-9985-fde134611424', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '339',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Libéria', 'LBR', 'LR', 'F', true, 'f7a2ffa1-171f-493f-9f9a-366eb7c832e0', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '340',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Líbia', 'LBY', 'LY', 'F', true, 'c352544b-692d-457e-8e6b-2fe27bc6bab1', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '341',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Liechtenstein', 'LIE', 'LI', 'F', true, '56c694ea-fb05-465e-bf22-1e7f27adb115', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '342',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Lituânia', 'LTU', 'LT', 'F', true, '1c13436b-a15f-4799-a712-25ebf40b05ab', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '343',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Luxemburgo', 'LUX', 'LU', 'F', true, 'a0001bf6-d867-4eaa-9585-664e6507e64b', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '344',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Macau', 'MAC', 'MO', 'F', true, '83a4da2e-fbaa-4661-bc82-d05ab68c1650', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '345',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Macedônia (República Yugoslava)', 'MKD', 'MK', 'F', true, '9d913bc9-c062-4770-87d3-368cf0ddcb22', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '346',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Madagascar', 'MDG', 'MG', 'F', true, '698f35ba-1c71-4bd7-a69c-802682c1f9e7', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '347',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Malásia', 'MYS', 'MY', 'F', true, '6c01d053-aef5-489f-908b-20bf7a2dd270', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '348',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Malaui', 'MWI', 'MW', 'F', true, 'e0f06f52-7842-4b9b-b941-520e2f18b954', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '349',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Maldivas', 'MDV', 'MV', 'F', true, 'bf2e9cf5-d52e-4d08-9fb3-2e30a920f769', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '350',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Mali', 'MLI', 'ML', 'F', true, 'f318de27-0180-4801-8a70-e2640fb216e6', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '351',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Malta', 'MLT', 'MT', 'F', true, '49b67949-41f7-424f-b0b5-d4ae9faf4658', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '352',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Marrocos', 'MAR', 'MA', 'F', true, 'b5febf5f-6321-4f60-8e7c-b0963ae3f3cc', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '353',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Martinica', 'MTQ', 'MQ', 'F', true, 'ea0d0843-d299-42ea-a31f-26f7842d2b03', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '354',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Mauritânia', 'MRT', 'MR', 'F', true, '3ec811a6-811d-4d9b-89c0-355c059bfcdb', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '355',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Mayotte', 'MYT', 'YT', 'F', true, '62d15a83-5e08-4304-9ae4-db46861e02f5', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '356',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Micronésia', 'FSM', 'FM', 'F', true, 'fa29044b-4a19-4b56-b56d-28423de4e5b2', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '357',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Moldova', 'MDA', 'MD', 'F', true, '5c475857-1d12-462d-80f7-ae3cdbd26433', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '358',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Mônaco', 'MCO', 'MC', 'F', true, 'ce77d49b-6ac0-426c-870c-f8d9c6ae74ad', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '359',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Mongólia', 'MNG', 'MN', 'F', true, '5694e0cf-0fc5-454f-bc82-0f8f719a44db', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '360',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Montenegro', 'MNE', 'ME', 'F', true, 'd251fd2d-92dc-497a-9659-e6f79c39eb87', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '361',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Montserrat', 'MSR', 'MS', 'F', true, 'b1a87cf1-ec35-4105-b9c0-4265af082380', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '362',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Myanma', 'MMR', 'MM', 'F', true, '4b5004a4-32e3-48bf-afa2-9a12f368c051', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '363',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Namíbia', 'NAM', 'NA', 'F', true, 'e77054fc-303a-40ae-947f-e59f9320c0e8', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '364',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Nauru', 'NRU', 'NR', 'F', true, 'da8de0ec-90ea-442c-b7e5-ad0501cb4419', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '365',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Nepal', 'NPL', 'NP', 'F', true, '44d0f015-6fe9-41ca-a80a-cc319e485696', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '366',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Níger', 'NER', 'NE', 'F', true, '69470089-895b-4b44-ada3-a2f3708c6ed1', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '367',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Niue', 'NIU', 'NU', 'F', true, 'ec1af94f-ebc6-49b3-bb19-ed71e72a943f', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '368',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Noruega', 'NOR', 'NO', 'F', true, 'ffaae57e-9e6d-46cc-bd90-d01bf1100796', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '369',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Nova Caledônia', 'NCL', 'NC', 'F', true, '7aa6ce04-6628-43c7-aea2-6f42cb78b386', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '370',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Omã', 'OMN', 'OM', 'F', true, 'd35ee24c-bb2e-4560-9336-3b11728eabdd', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '371',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Palau', 'PLW', 'PW', 'F', true, '578dd6a1-4b6d-4023-a4d5-9e6f2eafb912', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '372',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Papua-Nova Guiné', 'PNG', 'PG', 'F', true, 'e591fe71-f68d-4de7-b6b0-c76ab5949d75', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '373',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Paquistão', 'PAK', 'PK', 'F', true, '3cf029ae-230a-4460-933e-b54cdab2955f', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '374',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Polinésia Francesa', 'PYF', 'PF', 'F', true, 'b8a895bd-97b3-437e-ae3f-217469248a58', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '375',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Porto Rico', 'PRI', 'PR', 'F', true, '822d427c-7dee-497d-be96-f01794ce870d', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '376',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Qatar', 'QAT', 'QA', 'F', true, '8df028b2-01c3-4b93-bdb0-ef7a8e2ed8d3', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '377',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Quirguistão', 'KGZ', 'KG', 'F', true, '09ad8519-4bd9-44bb-8054-bbaadd834ab2', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '378',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('República Centro-Africana', 'CAF', 'CF', 'F', true, '6a9d4a9c-d7f1-4bf8-afbc-f28dc288aeaa', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '379',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('República Democrática do Congo', 'COD', 'CD', 'F', true, 'b2734bb0-296e-44a5-9a83-abf2d65fafe9', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '380',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('República Dominicana', 'DOM', 'DO', 'F', true, '57525a0f-48fe-4c22-a643-3516f620d194', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '381',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('República Tcheca', 'CZE', 'CZ', 'F', true, '20270bec-7b94-4c9e-9438-584b45ed8399', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '382',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Romênia', 'ROM', 'RO', 'F', true, '81df67a2-621f-428b-8307-57655a522b39', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '383',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Ruanda', 'RWA', 'RW', 'F', true, '25290999-a828-4ce7-aa1b-bbe61f0440d1', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '384',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Saara Ocidental', 'ESH', 'EH', 'F', true, '6a785173-2e02-4c19-b837-2ca2a80c2229', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '385',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Saint Vincente e Granadinas', 'VCT', 'VC', 'F', true, 'ac1667e6-211a-4cba-b10e-184ccb21d6f6', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '386',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Samoa Americana', 'ASM', 'AS', 'F', true, '3ac948de-a4ab-47b3-9e3d-db5d83e502bc', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '387',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Samoa Ocidental', 'WSM', 'WS', 'F', true, 'e01d9de1-a609-4d98-97ca-cfea0279bbcd', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '388',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('San Marino', 'SMR', 'SM', 'F', true, '8622060f-0e2a-42c9-b67d-3502f8bd2af7', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '389',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Santa Helena', 'SHN', 'SH', 'F', true, 'af343559-aab7-4f6b-9900-f42fb1369c1c', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '390',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Santa Lúcia', 'LCA', 'LC', 'F', true, '65c26374-030c-4e4e-8415-163e7b046920', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '391',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('São Bartolomeu', 'BLM', 'BL', 'F', true, '1a6c68c6-4510-4c71-b2f5-984203be562d', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '392',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('República Popular da China', 'RPC', 'RPC', 'F', true, '7977ce9a-fd84-49d7-8487-4c24fae57e49', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '430',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Portugal', 'PO', 'PO', 'F', true, '4ab9fb44-4b6c-43d9-be51-1ad883bf36b9', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '435',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('África do Sul', 'PT', 'PT', 'F', true, '96aabe56-7c05-4e11-92ce-4c868e0ec6ca', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '436',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Iugoslávia', 'IU', 'IU', 'F', true, '38bf4260-6759-4cc7-a823-1592173c0da4', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '438',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Martinica', 'FR', 'FR', 'F', true, 'f056ce72-7235-45da-b0ae-3a9f52187919', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '440',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('APATRIDA', 'AAA', 'AAA', 'F', true, 'd4c5dd31-a603-4953-9dd5-bbdf8a3498fd', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '442',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Japão', 'Jap', 'Jap', 'F', true, '8f475cf6-c4a9-4d23-b9d7-000e5486a43f', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '433',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('República da África do Sul', 'RAS', 'RAS', 'F', true, '92b4e4e2-1329-4e87-a6d2-2042947c19c4', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '437',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Martinica', 'MA', 'MA', 'F', true, '9b3ddc88-445d-44e4-8245-031065820c92', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '439',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('África', 'AF', 'AF', 'F', true, '1e0a3b61-1c02-4949-b5df-99d3ea12dd01', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '445',  (SELECT MAX("Id") FROM public."Pais")); 
+
+              INSERT INTO public."Pais" ("Nome", "Sigla", "SiglaAbreviada", "Tipo","Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('República de Moçambique', 'RM', 'RM', 'U', true, '6e5d3bec-3e08-48ef-a6cb-e079078c7d92', now(), now());
+                  INSERT INTO public."IntegracaoPais" ("IntegracaoSistemaId", "CodigoOrigem", "PaisId")
+                  VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '446',  (SELECT MAX("Id") FROM public."Pais")); 

@@ -1,0 +1,15 @@
+databaseChangeLog:
+-  changeSet:
+    id:  "225478 - Remover obrigatoriedade do campo CodigoInep na tabela Escola"
+    author:  Raoni
+    preConditions:
+        onFail: MARK_RAN
+        and:
+          tableExists:
+            tableName: Escola
+            columnName:  CodigoInep
+    changes:
+    -  dropNotNullConstraint:
+        columnName:  CodigoInep
+        schemaName:  public
+        tableName:  Escola

@@ -1,0 +1,51 @@
+databaseChangeLog:
+  - changeSet:
+      id: Cria tabela Campo
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM information_schema.tables
+                      WHERE table_name = 'Campo';
+      changes:
+        - createTable:
+            tableName: Campo
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                  name: Id
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Nome
+                  type: varchar(100)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Ativo 
+                  type: boolean
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Key
+                  type: uuid
+              - column:
+                  constraints:
+                    nullable: false
+                  name: CriadoEm
+                  type: TIMESTAMP WITH TIME ZONE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: AlteradoEm
+                  type: TIMESTAMP WITH TIME ZONE
+        - addPrimaryKey:
+            tableName: Campo
+            columnNames: Id
+            constraintName: PK_Campo

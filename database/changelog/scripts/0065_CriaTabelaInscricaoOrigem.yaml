@@ -1,0 +1,69 @@
+databaseChangeLog:
+  - changeSet:
+      id: Cria tabela InscricaoOrigem
+      author: Bruno Zeferino
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM information_schema.tables
+                      WHERE table_name = 'InscricaoOrigem';
+      changes:
+        - createTable:
+            tableName: InscricaoOrigem
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                  name: Id
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Key
+                  type: uuid
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Tipo
+                  type: integer
+              - column:
+                  name: Url
+                  type: varchar(250)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: InscricaoCandidatoId
+                  type: integer
+        - addPrimaryKey:
+            tableName: InscricaoOrigem
+            columnNames: Id
+            constraintName: PK_InscricaoOrigem               
+        - addForeignKeyConstraint:
+            baseColumnNames: InscricaoCandidatoId
+            baseTableName: InscricaoOrigem
+            constraintName: FK_InscricaoOrigem_InscricaoCandidato_InscricaoCandidatoId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: InscricaoCandidato
+            validate: true
+  - changeSet:
+      id:  Remover coluna Origem da tabela InscricaoCandidato
+      author:  Bruno Zeferino
+      preConditions:
+          onFail: MARK_RAN
+          and:
+            tableExists:
+              tableName: InscricaoCandidato
+              columnName: Origem
+      changes:
+        - dropColumn:
+            columnName: Origem
+            schemaName: public
+            tableName: InscricaoCandidato

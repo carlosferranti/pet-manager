@@ -1,0 +1,307 @@
+databaseChangeLog:
+  - changeSet:
+      id: Atualiza forma de entrada Vestibular tradicional
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 1
+                sql:  SELECT count(1)
+                      FROM public."FormaEntrada"
+                      WHERE "Nome" = 'Vestibular tradicional';
+      changes:
+        - update:
+            schemaName: public
+            tableName: FormaEntrada
+            where: 1=1 and "Nome" = 'Vestibular tradicional'
+            columns:
+              - column:
+                  name: Nome
+                  value: Vestibular Tradicional
+              - column:
+                  name: Key
+                  value: b2cc84db-9f98-43dc-b578-735486879407
+              - column:
+                  name: Descricao
+                  value: Escolha a melhor data e horário disponíveis para você realizar sua prova.
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp
+  - changeSet:
+      id: Atualiza forma de entrada Entrada simplificada
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 1
+                sql:  SELECT count(1)
+                      FROM public."FormaEntrada"
+                      WHERE "Nome" = 'Entrada simplificada';
+      changes:
+        - update:
+            schemaName: public
+            tableName: FormaEntrada
+            where: 1=1 and "Nome" = 'Entrada simplificada'
+            columns:
+              - column:
+                  name: Nome
+                  value: Vestibular Simplificado
+              - column:
+                  name: Key
+                  value: 1baf5ebb-b009-4ea6-a619-da67b83d0d41
+              - column:
+                  name: Descricao
+                  value: Acesse o portal do candidato e envie um texto contando por que deseja estudar conosco. Iremos avaliar sua redação e retornaremos com o resultado do processo.
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp
+  - changeSet:
+      id: Atualiza forma de entrada Reopção de Curso
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 1
+                sql:  SELECT count(1)
+                      FROM public."FormaEntrada"
+                      WHERE "Nome" = 'Reopção de Curso';
+      changes:
+        - update:
+            schemaName: public
+            tableName: FormaEntrada
+            where: 1=1 and "Nome" = 'Reopção de Curso'
+            columns:
+              - column:
+                  name: Nome
+                  value: Reopção
+              - column:
+                  name: Key
+                  value: 21779510-3c1c-44b1-a40d-6d8180b0719d
+              - column:
+                  name: Descricao
+                  value: Retorne à Instituição escolhendo um curso diferente do qual iniciou seus estudos.
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp
+  - changeSet:
+      id: Atualiza forma de entrada Retorno
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 1
+                sql:  SELECT count(1)
+                      FROM public."FormaEntrada"
+                      WHERE "Nome" = 'Retorno';
+      changes:
+        - update:
+            schemaName: public
+            tableName: FormaEntrada
+            where: 1=1 and "Nome" = 'Retorno'
+            columns:
+              - column:
+                  name: Nome
+                  value: Retornar/Destrancar
+              - column:
+                  name: Key
+                  value: 66aca41f-0d50-4a53-938a-2a1855cd8d82
+              - column:
+                  name: Descricao
+                  value: Volte para o curso exatamente de onde parou.
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp
+  - changeSet:
+      id: Atualiza forma de entrada Transferência Externa
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 1
+                sql:  SELECT count(1)
+                      FROM public."FormaEntrada"
+                      WHERE "Nome" = 'Transferência Externa';
+      changes:
+        - update:
+            schemaName: public
+            tableName: FormaEntrada
+            where: 1=1 and "Nome" = 'Transferência Externa'
+            columns:
+              - column:
+                  name: Nome
+                  value: Transferência
+              - column:
+                  name: Key
+                  value: 2cf76cd8-4ed8-4bd3-94f3-7f31f74fd1e1
+              - column:
+                  name: Descricao
+                  value: Envie seu histórico escolar e retornaremos em até 3 dias úteis com a avaliação da carga horária cursada.
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp
+  - changeSet:
+      id: Atualiza forma de entrada Enem
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 1
+                sql:  SELECT count(1)
+                      FROM public."FormaEntrada"
+                      WHERE "Nome" = 'Enem';
+      changes:
+        - update:
+            schemaName: public
+            tableName: FormaEntrada
+            where: 1=1 and "Nome" = 'Enem'
+            columns:
+              - column:
+                  name: Nome
+                  value: ENEM
+              - column:
+                  name: Key
+                  value: c97cab02-7905-49ae-8a75-39b28da142d1
+              - column:
+                  name: Descricao
+                  value: Vamos buscar sua sua nota no MEC e retornaremos com o resultado! Importante saber que podemos utilizar sua maior nota nos últimos 10 anos.
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp
+  - changeSet:
+      id: Atualiza forma de entrada Obtenção de Novo Título
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 1
+                sql:  SELECT count(1)
+                      FROM public."FormaEntrada"
+                      WHERE "Nome" = 'Obtenção de Novo Título';
+      changes:
+        - update:
+            schemaName: public
+            tableName: FormaEntrada
+            where: 1=1 and "Nome" = 'Obtenção de Novo Título'
+            columns:
+              - column:
+                  name: Nome
+                  value: Segunda graduação
+              - column:
+                  name: Key
+                  value: 3ebb6e4a-195e-466f-9278-606cb368596a
+              - column:
+                  name: Descricao
+                  value: Você que já possui uma formação superior e deseja iniciar uma nova graduação.
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp
+  - changeSet:
+      id: Insere forma de entrada tecnologo
+      author: Rafael
+      changes:
+        - insert:
+            schemaName: public
+            tableName: FormaEntrada
+            columns:
+              - column:
+                  name: Nome
+                  value: Tecnólogo
+              - column:
+                  name: Key
+                  value: 1fb70a23-8b36-4baf-a9ff-245339d568fa
+              - column:
+                  name: Descricao
+                  value: Um curso de nível superior voltado para o mercado de trabalho e com menor duração.
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: Ativo
+                  value: true
+              - column:
+                  name: CriadoEm
+                  valueComputed: current_timestamp 
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp 
+  - changeSet:
+      id: Insere forma de entrada Vestibular Escolar
+      author: Rafael
+      changes:
+        - insert:
+            schemaName: public
+            tableName: FormaEntrada
+            columns:
+              - column:
+                  name: Nome
+                  value: Vestibular Escolar
+              - column:
+                  name: Key
+                  value: f0a0c8a1-1aff-4321-b33c-21cbe45309b3
+              - column:
+                  name: Descricao
+                  value: Processo seletivo para estudantes de escolas de ensino médio parceiras Ânima.
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: Ativo
+                  value: true
+              - column:
+                  name: CriadoEm
+                  valueComputed: current_timestamp 
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp 
+  - changeSet:
+      id: Insere forma de entrada Vestibular Corporativo
+      author: Rafael
+      changes:
+        - insert:
+            schemaName: public
+            tableName: FormaEntrada
+            columns:
+              - column:
+                  name: Nome
+                  value: Vestibular Corporativo
+              - column:
+                  name: Key
+                  value: 9de4b05d-c4d6-4b51-9209-be73d2b3a984
+              - column:
+                  name: Descricao
+                  value: Processo seletivo para funcionários de empresas parceiras Ânima.
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: Ativo
+                  value: true
+              - column:
+                  name: CriadoEm
+                  valueComputed: current_timestamp 
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp 
+  - changeSet:
+      id: Exclui a forma de entrada COI
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 1
+                sql:  SELECT count(1)
+                      FROM public."FormaEntrada"
+                      WHERE "Nome" = 'COI';
+      changes:
+        - delete:
+            schemaName: public
+            tableName: FormaEntrada
+            where: 1=1 and "Nome" = 'COI'

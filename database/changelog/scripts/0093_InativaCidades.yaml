@@ -1,0 +1,31 @@
+databaseChangeLog:
+  - changeSet:
+      id: Inativa cidades
+      author: Rafael
+      changes:
+        - sql:
+            sql: |
+              UPDATE public."Cidade"
+              SET "Ativo" = false
+              WHERE upper("Nome") like '%INATIVO%';
+
+              CREATE TEMPORARY TABLE cidades_duplicadas AS
+              select "Nome", "EstadoId", count(*)
+              from public."Cidade"
+              where "Ativo" = true
+              group by "Nome", "EstadoId"
+              having count(*) > 1;
+
+              UPDATE
+                "Cidade" c
+              SET
+                "Ativo" = false
+              FROM
+                cidades_duplicadas cd
+              WHERE
+                c."Nome" = cd."Nome" and 
+                c."EstadoId" = cd."EstadoId" and 
+                c."Id" != (select max("Id") from public."Cidade" where "Nome" = c."Nome" and "EstadoId" = c."EstadoId");
+                
+              drop table cidades_duplicadas;
+              

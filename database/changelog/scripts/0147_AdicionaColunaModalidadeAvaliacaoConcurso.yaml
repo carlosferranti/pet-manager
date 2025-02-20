@@ -1,0 +1,27 @@
+databaseChangeLog:
+-  changeSet:
+    id: Adiciona coluna ModalidadeAvaliacaoId na tabela Concurso
+    author: Rafael
+    preConditions:
+      onFail: MARK_RAN
+      and:
+        - sqlCheck:
+              expectedResult: 0
+              sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'Concurso' AND column_name = 'ModalidadeAvaliacaoId'
+    changes:
+      - addColumn:
+          schemaName: public
+          tableName: Concurso
+          columns:
+            - column:
+                constraints:
+                  nullable: true
+                name: ModalidadeAvaliacaoId
+                type: integer
+      -  addForeignKeyConstraint:
+          baseColumnNames: ModalidadeAvaliacaoId
+          baseTableName: Concurso
+          constraintName: FK_Concurso_ModalidadeAvaliacao_ModalidadeAvaliacaoId
+          referencedColumnNames: Id
+          referencedTableName: ModalidadeAvaliacao
+          onDelete: RESTRICT

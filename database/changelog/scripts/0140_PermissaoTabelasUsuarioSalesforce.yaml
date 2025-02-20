@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: Insere permissões de acesso as tabelas do sistema para o usuário servico_inscricoes_job_integracao_salesforce
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 1
+                sql:  SELECT count(*) FROM pg_roles WHERE rolname='servico_inscricoes_job_integracao_salesforce'
+      changes:
+        - sql:
+            sql: |
+              GRANT ALL ON public."SistemaIntegracao" TO servico_inscricoes_job_integracao_salesforce;
+              GRANT ALL ON public."IntegracaoInscricao" TO servico_inscricoes_job_integracao_salesforce;
+              GRANT ALL ON public."InscricaoCandidato" TO servico_inscricoes_job_integracao_salesforce;

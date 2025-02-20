@@ -1,0 +1,98 @@
+databaseChangeLog:
+  - changeSet:
+      id: "228756 - Realizar carga de integrações Marcas do salesforce"
+      author: Raoni
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 1
+            sql:  SELECT count(1) 
+                  FROM INFORMATION_SCHEMA.TABLES 
+                  WHERE TABLE_NAME = 'Marca' 
+        - sqlCheck:
+            expectedResult: 1
+            sql:  SELECT count(1) 
+                  FROM INFORMATION_SCHEMA.TABLES 
+                  WHERE TABLE_NAME = 'IntegracaoMarca'
+        - sqlCheck:
+            expectedResult: 1
+            sql:  select count(1) from "SistemaIntegracao" where "Nome" = 'Salesforce'
+      changes:
+        - sql:
+            sql: |
+
+              --UNIFG
+              INSERT INTO public."IntegracaoMarca"("IntegracaoSistemaId", "CodigoOrigem", "MarcaId")
+              VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Salesforce'), '10', (select "Id" from public."Marca" where "Key" = '272aa8cc-12a7-4eca-84b8-6740bbc1918a'));
+
+              --Unisul
+              INSERT INTO public."IntegracaoMarca"("IntegracaoSistemaId", "CodigoOrigem", "MarcaId")
+              VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Salesforce'), '8', (select "Id" from public."Marca" where "Key" = '63756a56-92bb-40a3-8a56-d23b9714e2e5'));
+
+              --Unifgua
+              INSERT INTO public."IntegracaoMarca"("IntegracaoSistemaId", "CodigoOrigem", "MarcaId")
+              VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Salesforce'), '21', (select "Id" from public."Marca" where "Key" = 'b70a24ef-082f-4274-b040-f541f630b26a'));
+
+              --FPB
+              INSERT INTO public."IntegracaoMarca"("IntegracaoSistemaId", "CodigoOrigem", "MarcaId")
+              VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Salesforce'), '22', (select "Id" from public."Marca" where "Key" = 'ffa5395a-9dcc-44cb-a8fe-3c8515f2a95a'));
+
+              --UNIBH
+              INSERT INTO public."IntegracaoMarca"("IntegracaoSistemaId", "CodigoOrigem", "MarcaId")
+              VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Salesforce'), '1', (select "Id" from public."Marca" where "Key" = 'e9b1816f-45e9-4e2a-b2c6-c304dace2bd0'));
+
+              --UNA
+              INSERT INTO public."IntegracaoMarca"("IntegracaoSistemaId", "CodigoOrigem", "MarcaId")
+              VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Salesforce'), '2', (select "Id" from public."Marca" where "Key" = '0d9d4465-d7d6-4a3c-a9f5-638f51ee65f4'));
+
+              --USJT
+              INSERT INTO public."IntegracaoMarca"("IntegracaoSistemaId", "CodigoOrigem", "MarcaId")
+              VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Salesforce'), '5', (select "Id" from public."Marca" where "Key" = '09980708-3b26-4056-b4a6-51f8402b4d8e'));
+
+              --SOCIESC
+              INSERT INTO public."IntegracaoMarca"("IntegracaoSistemaId", "CodigoOrigem", "MarcaId")
+              VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Salesforce'), '12', (select "Id" from public."Marca" where "Key" = '4720899c-db78-4c87-8083-fce30e20916b'));
+
+              --AGES
+              INSERT INTO public."IntegracaoMarca"("IntegracaoSistemaId", "CodigoOrigem", "MarcaId")
+              VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Salesforce'), '6', (select "Id" from public."Marca" where "Key" = 'dd420dc7-4619-4449-81df-cc1aae5cff31'));
+
+              --FASEH
+              INSERT INTO public."IntegracaoMarca"("IntegracaoSistemaId", "CodigoOrigem", "MarcaId")
+              VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Salesforce'), '9', (select "Id" from public."Marca" where "Key" = '0ebca44c-c414-46a6-81f2-88c781ea94bb'));
+
+              --BSP
+              INSERT INTO public."IntegracaoMarca"("IntegracaoSistemaId", "CodigoOrigem", "MarcaId")
+              VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Salesforce'), '23', (select "Id" from public."Marca" where "Key" = 'dc66763c-131c-4b8b-9899-11e6bd40da01'));
+
+              --UniCuritiba
+              INSERT INTO public."IntegracaoMarca"("IntegracaoSistemaId", "CodigoOrigem", "MarcaId")
+              VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Salesforce'), '7', (select "Id" from public."Marca" where "Key" = '3813a503-190c-40d4-80bc-cd7aa61c7fde'));
+
+              --CEDEPE
+              INSERT INTO public."IntegracaoMarca"("IntegracaoSistemaId", "CodigoOrigem", "MarcaId")
+              VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Salesforce'), '24', (select "Id" from public."Marca" where "Key" = 'a3beff96-72a6-42a6-a735-439746e4a958'));
+
+              --UAM
+              INSERT INTO public."IntegracaoMarca"("IntegracaoSistemaId", "CodigoOrigem", "MarcaId")
+              VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Salesforce'), '13', (select "Id" from public."Marca" where "Key" = 'bb348e69-b314-4d96-9672-4df9f91f6b26'));
+
+              --IBMR
+              INSERT INTO public."IntegracaoMarca"("IntegracaoSistemaId", "CodigoOrigem", "MarcaId")
+              VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Salesforce'), '14', (select "Id" from public."Marca" where "Key" = 'c614c719-543c-42aa-8837-a133d1b529cd'));
+
+              --UNIFACS
+              INSERT INTO public."IntegracaoMarca"("IntegracaoSistemaId", "CodigoOrigem", "MarcaId")
+              VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Salesforce'), '15', (select "Id" from public."Marca" where "Key" = '8e9e2a51-9c19-47ac-877d-a91b7bf1bbd3'));
+
+              --UNP
+              INSERT INTO public."IntegracaoMarca"("IntegracaoSistemaId", "CodigoOrigem", "MarcaId")
+              VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Salesforce'), '16', (select "Id" from public."Marca" where "Key" = '32a390fd-b6fa-4e43-b492-0eadb9934e1a'));
+
+              --UNR/UNIRITTER
+              INSERT INTO public."IntegracaoMarca"("IntegracaoSistemaId", "CodigoOrigem", "MarcaId")
+              VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Salesforce'), '17', (select "Id" from public."Marca" where "Key" = '62355230-72ee-4a76-8763-078f33bcfdf7'));
+
+              --FAD/FADERGS
+              INSERT INTO public."IntegracaoMarca"("IntegracaoSistemaId", "CodigoOrigem", "MarcaId")
+              VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Salesforce'), '18', (select "Id" from public."Marca" where "Key" = '3ff1fb55-d02d-42c8-80c7-d5dbaed357ce'));

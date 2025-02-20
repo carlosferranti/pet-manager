@@ -1,0 +1,164 @@
+databaseChangeLog:
+  - changeSet:
+      id: Cria tabela Marca
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM information_schema.tables
+                      WHERE table_name = 'Marca';
+      changes:
+        - createTable:
+            tableName: Marca
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                  name: Id
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Nome
+                  type: varchar(100)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Sigla
+                  type: varchar(50)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Ativo 
+                  type: boolean
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Key
+                  type: uuid
+              - column:
+                  constraints:
+                    nullable: false
+                  name: CriadoEm
+                  type: TIMESTAMP WITH TIME ZONE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: AlteradoEm
+                  type: TIMESTAMP WITH TIME ZONE
+  - changeSet:
+      id: Cria tabela IntegracaoMarca
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM information_schema.tables
+                      WHERE table_name = 'IntegracaoMarca';
+      changes:
+        - createTable:
+            tableName: IntegracaoMarca
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                  name: Id
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: IntegracaoSistemaId
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: CodigoOrigem
+                  type: varchar(100)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: MarcaId 
+                  type: integer
+        - addForeignKeyConstraint:
+            baseColumnNames: MarcaId
+            baseTableName: IntegracaoMarca
+            constraintName: FK_IntegracaoMarca_Marca_MarcaId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: Marca
+            validate: true
+        - addForeignKeyConstraint:
+            baseColumnNames: IntegracaoSistemaId
+            baseTableName: IntegracaoMarca
+            constraintName: FK_IntegracaoMarca_SistemaIntegracao_IntegracaoSistemaId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: SistemaIntegracao
+            validate: true
+  - changeSet:
+      id: Insere coluna MarcaId na tabela InscricaoCandidato
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          columnExists:
+            tableName: InscricaoCandidato
+            columnName: MarcaId
+      changes:
+        - addColumn:
+            tableName: InscricaoCandidato
+            columns:
+              - column:
+                  name: MarcaId
+                  type: int
+        - addForeignKeyConstraint:
+            baseColumnNames: MarcaId
+            baseTableName: InscricaoCandidato
+            constraintName: FK_InscricaoCandidato_Marca_MarcaId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: Marca
+            validate: true
+  - changeSet:
+      id: Insere coluna MarcaId na tabela Instituicao
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          columnExists:
+            tableName: Instituicao
+            columnName: MarcaId
+      changes:
+        - addColumn:
+            tableName: Instituicao
+            columns:
+              - column:
+                  name: MarcaId
+                  type: int
+        - addForeignKeyConstraint:
+            baseColumnNames: MarcaId
+            baseTableName: Instituicao
+            constraintName: FK_Instituicao_Marca_MarcaId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: Marca
+            validate: true

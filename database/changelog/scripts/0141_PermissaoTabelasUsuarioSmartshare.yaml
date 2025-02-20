@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: Insere permissões de acesso as tabelas do sistema para o usuário servico_inscricoes_job_integracao_smartshare
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 1
+                sql:  SELECT count(*) FROM pg_roles WHERE rolname='servico_inscricoes_job_integracao_smartshare'
+      changes:
+        - sql:
+            sql: |
+                GRANT ALL ON public."InscricaoDocumentacao" TO servico_inscricoes_job_integracao_smartshare;
+                GRANT ALL ON public."InscricaoCandidato" TO servico_inscricoes_job_integracao_smartshare;

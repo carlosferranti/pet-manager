@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: Renomeia coluna de FormaIngressoPaiId para FormaEntradaPaiId
+      author: Rafael
+      changes:
+        - renameColumn:
+            tableName: FormaEntrada
+            oldColumnName: FormaIngressoPaiId
+            newColumnName: FormaEntradaPaiId

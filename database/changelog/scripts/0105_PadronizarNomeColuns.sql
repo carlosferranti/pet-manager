@@ -1,0 +1,1 @@
+ALTER TABLE "InstituicaoLink" RENAME COLUMN "IdInstituicao" TO "InstituicaoId";

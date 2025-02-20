@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: Remove constraint Not Null da coluna AnoConclusao na tabela InscricaoEscolaridade
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 1
+                sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'InscricaoEscolaridade' AND column_name = 'AnoConclusao'
+      changes:
+        - dropNotNullConstraint:
+            columnName: AnoConclusao
+            tableName: InscricaoEscolaridade
+  - changeSet:
+      id: Remove constraint Not Null da coluna EstadoId na tabela InscricaoEscolaridade
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 1
+                sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'InscricaoEscolaridade' AND column_name = 'EstadoId'
+      changes:
+        - dropNotNullConstraint:
+            columnName: EstadoId
+            tableName: InscricaoEscolaridade
+  - changeSet:
+      id: Remove constraint Not Null da coluna CidadeId na tabela InscricaoEscolaridade
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 1
+                sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'InscricaoEscolaridade' AND column_name = 'CidadeId'
+      changes:
+        - dropNotNullConstraint:
+            columnName: CidadeId
+            tableName: InscricaoEscolaridade

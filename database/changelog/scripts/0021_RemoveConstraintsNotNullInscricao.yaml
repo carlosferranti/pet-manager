@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: Remove constraint Not Null da coluna CandidatoNome na tabela InscricaoCandidato
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 1
+                sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'InscricaoCandidato' AND column_name = 'CandidatoNome'
+      changes:
+        - dropNotNullConstraint:
+            columnName:  CandidatoNome
+            tableName:  InscricaoCandidato
+  - changeSet:
+      id: Remove constraint Not Null da coluna VoucherCodigo na tabela InscricaoCandidato
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 1
+                sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'InscricaoCandidato' AND column_name = 'VoucherCodigo'
+      changes:
+        - dropNotNullConstraint:
+            columnName:  VoucherCodigo
+            tableName:  InscricaoCandidato
+  - changeSet:
+      id: Remove constraint Not Null da coluna VoucherValidado na tabela InscricaoCandidato
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 1
+                sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'InscricaoCandidato' AND column_name = 'VoucherValidado'
+      changes:
+        - dropNotNullConstraint:
+            columnName:  VoucherValidado
+            tableName:  InscricaoCandidato

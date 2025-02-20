@@ -1,0 +1,93 @@
+databaseChangeLog:
+  - changeSet:
+      id: Insere link padrão
+      author: Rafael
+      changes:
+        - insert:
+            schemaName: public
+            tableName: Link
+            columns:
+              - column:
+                  name: Nome
+                  value: Link Padrão
+              - column:
+                  name: Ativo
+                  value: true
+              - column:
+                  name: Key
+                  value: 85d86954-c5b1-44fa-8382-e34f4fa8f878
+              - column:
+                  name: CriadoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp
+  - changeSet:
+      id: Insere link Vestibular Escolar
+      author: Rafael
+      changes:
+        - insert:
+            schemaName: public
+            tableName: Link
+            columns:
+              - column:
+                  name: Nome
+                  value: Link Vestibular Escolar
+              - column:
+                  name: Ativo
+                  value: true
+              - column:
+                  name: Key
+                  value: 0dcba295-8352-4c10-8fb8-ff22beb99b27
+              - column:
+                  name: CriadoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp
+  - changeSet:
+      id: Insere link Vestibular Corporativo
+      author: Rafael
+      changes:
+        - insert:
+            schemaName: public
+            tableName: Link
+            columns:
+              - column:
+                  name: Nome
+                  value: Link Vestibular Corporativo
+              - column:
+                  name: Ativo
+                  value: true
+              - column:
+                  name: Key
+                  value: ceb31c9f-4582-4b68-a388-5bf5a268f73f
+              - column:
+                  name: CriadoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp
+  - changeSet:
+      id: Insere link Tecnólogo
+      author: Rafael
+      changes:
+        - insert:
+            schemaName: public
+            tableName: Link
+            columns:
+              - column:
+                  name: Nome
+                  value: Link Tecnólogo
+              - column:
+                  name: Ativo
+                  value: true
+              - column:
+                  name: Key
+                  value: 05f69dc6-f6b8-4818-ac36-cee5d0ea8735
+              - column:
+                  name: CriadoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp

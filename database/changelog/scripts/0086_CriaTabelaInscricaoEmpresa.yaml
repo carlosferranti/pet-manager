@@ -1,0 +1,74 @@
+databaseChangeLog:
+  - changeSet:
+      id: Cria tabela InscricaoEmpresa
+      author: Felipe
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM information_schema.tables
+                      WHERE table_name = 'InscricaoEmpresa';
+      changes:
+        - createTable:
+            tableName: InscricaoEmpresa
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                  name: Id
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Key
+                  type: uuid
+              - column:
+                  constraints:
+                    nullable: false
+                  name: InscricaoCandidatoId
+                  type: integer
+              - column:
+                  name: EmpresaId
+                  type: integer
+              - column:
+                  name: OutraEmpresa
+                  type: varchar(200)          
+              - column:
+                  constraints:
+                    nullable: false
+                  name: CriadoEm
+                  type: TIMESTAMP WITH TIME ZONE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: AlteradoEm
+                  type: TIMESTAMP WITH TIME ZONE
+        - addPrimaryKey:
+            tableName: InscricaoEmpresa
+            columnNames: Id
+            constraintName: PK_InscricaoEmpresa
+        - addForeignKeyConstraint:
+            baseColumnNames: InscricaoCandidatoId
+            baseTableName: InscricaoEmpresa
+            constraintName: FK_InscricaoEmpresa_InscricaoCandidato_InscricaoCandidatoId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: InscricaoCandidato
+            validate: true
+        - addForeignKeyConstraint:
+            baseColumnNames: EmpresaId
+            baseTableName: InscricaoEmpresa
+            constraintName: FK_InscricaoEmpresa_Empresa_EmpresaId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: Empresa
+            validate: true

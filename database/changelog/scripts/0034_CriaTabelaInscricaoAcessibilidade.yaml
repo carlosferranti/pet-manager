@@ -1,0 +1,85 @@
+databaseChangeLog:
+  - changeSet:
+      id: Cria tabela InscricaoAcessibilidade
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM information_schema.tables
+                      WHERE table_name = 'InscricaoAcessibilidade';
+      changes:
+        - createTable:
+            tableName: InscricaoAcessibilidade
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                  name: Id
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Key
+                  type: uuid
+              - column:
+                  constraints:
+                    nullable: false
+                  name: InscricaoCandidatoId
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: AcessibilidadeId
+                  type: integer
+              - column:
+                  name: LocalArquivo
+                  type: varchar(100)          
+              - column:
+                  name: NomeArquivo
+                  type: varchar(100)          
+              - column:
+                  name: ExtensaoArquivo
+                  type: varchar(10)           
+              - column:
+                  name: TamanhoArquivo
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: CriadoEm
+                  type: TIMESTAMP WITH TIME ZONE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: AlteradoEm
+                  type: TIMESTAMP WITH TIME ZONE
+        - addPrimaryKey:
+            tableName: InscricaoAcessibilidade
+            columnNames: Id
+            constraintName: PK_InscricaoAcessibilidade
+        - addForeignKeyConstraint:
+            baseColumnNames: AcessibilidadeId
+            baseTableName: InscricaoAcessibilidade
+            constraintName: FK_InscricaoAcessibilidade_Acessibilidade_AcessibilidadeId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: Acessibilidade
+            validate: true
+        - addForeignKeyConstraint:
+            baseColumnNames: InscricaoCandidatoId
+            baseTableName: InscricaoAcessibilidade
+            constraintName: FK_InscricaoAcessibilidade_InscricaoCandidato_InscricaoCandidatoId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: InscricaoCandidato
+            validate: true

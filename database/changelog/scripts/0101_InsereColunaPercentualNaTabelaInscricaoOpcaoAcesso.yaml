@@ -1,0 +1,20 @@
+databaseChangeLog:
+-  changeSet:
+    id: Alterar a tabela InscricaoOpcaoAcesso adicionando a coluna Percentual
+    author: Rafael
+    preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'InscricaoOpcaoAcesso' AND column_name = 'Percentual'
+    changes:
+      - addColumn:
+          schemaName: public
+          tableName: InscricaoOpcaoAcesso
+          columns:
+            - column:
+                constraints:
+                  nullable: true
+                name: Percentual 
+                type: numeric

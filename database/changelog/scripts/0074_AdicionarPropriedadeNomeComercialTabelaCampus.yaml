@@ -1,0 +1,24 @@
+databaseChangeLog:
+-  changeSet:
+    id: 235394 - Alterar a tabela Curso adicionando a coluna NomeComercial
+    author:  Raoni
+    preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 1
+                sql:  SELECT count(1)
+                      FROM information_schema.tables
+                      WHERE table_name = 'Curso';
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'Curso' AND column_name = 'NomeComercial'
+    changes:
+      - addColumn:
+          schemaName: public
+          tableName: Curso
+          columns:
+            - column:
+                constraints:
+                name: NomeComercial 
+                type: varchar(200)

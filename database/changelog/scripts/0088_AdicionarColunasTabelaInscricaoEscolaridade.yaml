@@ -1,0 +1,37 @@
+databaseChangeLog:
+-  changeSet:
+    id: Alterar a tabela InscricaoEscolaridade adicionando as colunas Nivel e CursoExternoId
+    author:  Bruno Zeferino
+    preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'InscricaoEscolaridade' AND column_name = 'Nivel'
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'InscricaoEscolaridade' AND column_name = 'CursoExternoId'
+    changes:
+      - addColumn:
+          schemaName: public
+          tableName: InscricaoEscolaridade
+          columns:
+            - column:
+                constraints:
+                  nullable: false
+                name: Nivel 
+                type: integer
+            - column:
+                name: CursoExternoId
+                type: integer
+      - addForeignKeyConstraint:
+            baseColumnNames: CursoExternoId
+            baseTableName: InscricaoEscolaridade
+            constraintName: FK_InscricaoEscolaridade_CursoExterno_CursoExternoId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: CursoExterno
+            validate: true

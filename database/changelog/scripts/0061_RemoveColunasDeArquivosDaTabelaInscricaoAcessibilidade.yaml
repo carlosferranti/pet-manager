@@ -1,0 +1,57 @@
+databaseChangeLog:
+-  changeSet:
+    id: Alterar a tabela InscricaoAcessibilidade removendo a coluna LocalArquivo
+    author:  Rafael
+    preConditions:
+        onFail: MARK_RAN
+        and:
+          tableExists:
+            tableName: InscricaoAcessibilidade
+            columnName:  LocalArquivo
+    changes:
+    -  dropColumn:
+          columnName:  LocalArquivo
+          schemaName:  public
+          tableName:  InscricaoAcessibilidade
+-  changeSet:
+    id: Alterar a tabela InscricaoAcessibilidade removendo a coluna NomeArquivo
+    author:  Rafael
+    preConditions:
+        onFail: MARK_RAN
+        and:
+          tableExists:
+            tableName: InscricaoAcessibilidade
+            columnName:  NomeArquivo
+    changes:
+    -  dropColumn:
+          columnName:  NomeArquivo
+          schemaName:  public
+          tableName:  InscricaoAcessibilidade
+-  changeSet:
+    id: Alterar a tabela InscricaoAcessibilidade removendo a coluna ExtensaoArquivo
+    author:  Rafael
+    preConditions:
+        onFail: MARK_RAN
+        and:
+          tableExists:
+            tableName: InscricaoAcessibilidade
+            columnName:  ExtensaoArquivo
+    changes:
+    -  dropColumn:
+          columnName:  ExtensaoArquivo
+          schemaName:  public
+          tableName:  InscricaoAcessibilidade
+-  changeSet:
+    id: Alterar a tabela InscricaoAcessibilidade removendo a coluna TamanhoArquivo
+    author:  Rafael
+    preConditions:
+        onFail: MARK_RAN
+        and:
+          tableExists:
+            tableName: InscricaoAcessibilidade
+            columnName:  TamanhoArquivo
+    changes:
+    -  dropColumn:
+          columnName:  TamanhoArquivo
+          schemaName:  public
+          tableName:  InscricaoAcessibilidade

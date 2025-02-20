@@ -1,0 +1,1 @@
+ALTER TABLE "LinkInstituicao" RENAME TO "InstituicaoLink"

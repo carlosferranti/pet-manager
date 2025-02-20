@@ -1,0 +1,68 @@
+databaseChangeLog:
+  - changeSet:
+      id: Cria tabela CampoFicha
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM information_schema.tables
+                      WHERE table_name = 'CampoFicha';
+      changes:
+        - createTable:
+            tableName: CampoFicha
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                  name: Id
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: FichaId
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: CampoId
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: ObrigatorioNaFicha 
+                  type: boolean
+              - column:
+                  constraints:
+                    nullable: false
+                  name: ObrigatorioNoComplemento 
+                  type: boolean
+        - addForeignKeyConstraint:
+            baseColumnNames: FichaId
+            baseTableName: CampoFicha
+            constraintName: FK_CampoFicha_Ficha_FichaId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: Ficha
+            validate: true
+        - addForeignKeyConstraint:
+            baseColumnNames: CampoId
+            baseTableName: CampoFicha
+            constraintName: FK_CampoFicha_Campo_CampoId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: Campo
+            validate: true
+        - addPrimaryKey:
+            tableName: CampoFicha
+            columnNames: Id
+            constraintName: PK_CampoFicha

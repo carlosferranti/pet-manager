@@ -1,0 +1,130 @@
+databaseChangeLog:
+  - changeSet:
+      id: Cria tabela Cupom
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM information_schema.tables
+                      WHERE table_name = 'Cupom';
+      changes:
+        - createTable:
+            tableName: Cupom
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                  name: Id
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: ConcursoId
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Codigo 
+                  type: varchar(100)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Descricao 
+                  type: varchar(500)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: ValorDesconto 
+                  type: real
+              - column:
+                  constraints:
+                    nullable: false
+                  name: TipoDesconto 
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: DataValidade 
+                  type: TIMESTAMP WITH TIME ZONE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Ativo 
+                  type: boolean
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Key
+                  type: uuid
+              - column:
+                  constraints:
+                    nullable: false
+                  name: CriadoEm
+                  type: TIMESTAMP WITH TIME ZONE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: AlteradoEm
+                  type: TIMESTAMP WITH TIME ZONE
+  - changeSet:
+      id: Cria tabela IntegracaoCupom
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM information_schema.tables
+                      WHERE table_name = 'IntegracaoCupom';
+      changes:
+        - createTable:
+            tableName: IntegracaoCupom
+            columns:
+              - column:
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                  name: Id
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: IntegracaoSistemaId
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: CodigoOrigem
+                  type: varchar(100)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: CupomId 
+                  type: integer
+        - addForeignKeyConstraint:
+            baseColumnNames: CupomId
+            baseTableName: IntegracaoCupom
+            constraintName: FK_IntegracaoCupom_Cupom_CupomId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: Cupom
+            validate: true
+        - addForeignKeyConstraint:
+            baseColumnNames: IntegracaoSistemaId
+            baseTableName: IntegracaoCupom
+            constraintName: FK_IntegracaoCupom_SistemaIntegracao_IntegracaoSistemaId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: SistemaIntegracao
+            validate: true

@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: Corrige descricao da forma entrada Reopção
+      author: Rafael
+      changes:
+        - sql:
+            sql: |
+                  update "FormaEntrada"
+                  set "Descricao" = 'Retorne à instituição escolhendo um curso diferente do qual iniciou seus estudos.'
+                  where "Key" = '21779510-3c1c-44b1-a40d-6d8180b0719d';

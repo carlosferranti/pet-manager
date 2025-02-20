@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: Remove coluna FormaEntradaId na tabela InscricaoCandidato
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 1
+                sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'InscricaoCandidato' AND column_name = 'FormaEntradaId'
+      changes:
+        - dropColumn:
+            tableName: InscricaoCandidato
+            columns:
+              - column:
+                  name: FormaEntradaId

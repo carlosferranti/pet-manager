@@ -1,0 +1,31 @@
+databaseChangeLog:
+  - changeSet:
+      id: Remove coluna VoucherCodigo na tabela InscricaoCandidato
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 1
+                sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'InscricaoCandidato' AND column_name = 'VoucherCodigo'
+      changes:
+        - dropColumn:
+            tableName: InscricaoCandidato
+            columns:
+              - column:
+                  name: VoucherCodigo
+  - changeSet:
+      id: Remove coluna VoucherValidado na tabela InscricaoCandidato
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 1
+                sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'InscricaoCandidato' AND column_name = 'VoucherValidado'
+      changes:
+        - dropColumn:
+            tableName: InscricaoCandidato
+            columns:
+              - column:
+                  name: VoucherValidado

@@ -1,0 +1,61 @@
+databaseChangeLog:
+  - changeSet:
+      id: Cria tabela Matricula
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM information_schema.tables
+                      WHERE table_name = 'Matricula';
+      changes:
+        - createTable:
+            tableName: Matricula
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Id
+                  type: integer
+                  autoIncrement: true
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Key
+                  type: uuid
+              - column:
+                  constraints:
+                    nullable: false
+                  name: CodigoAluno
+                  type: varchar(50)
+              - column:
+                  constraints:
+                    nullable: true
+                  name: Ra 
+                  type: varchar(50)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Status 
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Ativo 
+                  type: boolean
+              - column:
+                  constraints:
+                    nullable: false
+                  name: CriadoEm
+                  type: TIMESTAMP WITH TIME ZONE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: AlteradoEm
+                  type: TIMESTAMP WITH TIME ZONE
+        - addPrimaryKey:
+            tableName: Matricula
+            columnNames: Id
+            constraintName: PK_Matricula

@@ -1,0 +1,20 @@
+databaseChangeLog:
+-  changeSet:
+    id: Alterar a tabela Escola adicionando a coluna TipoCategoria
+    author: Rafael
+    preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'Escola' AND column_name = 'TipoCategoria'
+    changes:
+      - addColumn:
+          schemaName: public
+          tableName: Escola
+          columns:
+            - column:
+                constraints:
+                  nullable: false
+                name: TipoCategoria 
+                type: integer

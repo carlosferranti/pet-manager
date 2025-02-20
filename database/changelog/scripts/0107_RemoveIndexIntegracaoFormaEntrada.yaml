@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: Insere registros de integracao de forma de entrada para o vestib
+      author: Pablo
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 1
+            sql:  SELECT COUNT (1)
+                  FROM PG_INDEX IX
+                  JOIN PG_CLASS T ON T.OID = IX.INDRELID
+                  JOIN PG_CLASS I ON I.OID = IX.INDEXRELID
+                  JOIN PG_ATTRIBUTE A ON A.ATTRELID = T.OID AND A.ATTNUM = ANY(IX.INDKEY)
+                  WHERE T.RELKIND = 'r'
+                  AND I.RELNAME  = 'IX_IntegracaoFormaEntrada_FormaEntradaId';
+      changes:
+        - sql:
+            sql: |
+                DROP INDEX "IX_IntegracaoFormaEntrada_FormaEntradaId" ;

@@ -1,0 +1,129 @@
+databaseChangeLog:
+  - changeSet:
+      id: Insere registros de integracao de forma de entrada para o vestib
+      author: Rafael
+      changes:
+        - sql:
+            sql: |
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '71', (select "Id" from "FormaEntrada" where "Key" = '66aca41f-0d50-4a53-938a-2a1855cd8d82'));
+                
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '87', (select "Id" from "FormaEntrada" where "Key" = '66aca41f-0d50-4a53-938a-2a1855cd8d82'));
+                
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '96', (select "Id" from "FormaEntrada" where "Key" = '66aca41f-0d50-4a53-938a-2a1855cd8d82'));
+                            
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '73', (select "Id" from "FormaEntrada" where "Key" = '66aca41f-0d50-4a53-938a-2a1855cd8d82'));
+
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '86', (select "Id" from "FormaEntrada" where "Key" = '66aca41f-0d50-4a53-938a-2a1855cd8d82'));
+                
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '91', (select "Id" from "FormaEntrada" where "Key" = '66aca41f-0d50-4a53-938a-2a1855cd8d82'));
+                
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '53', (select "Id" from "FormaEntrada" where "Key" = '3ebb6e4a-195e-466f-9278-606cb368596a'));
+                
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '69', (select "Id" from "FormaEntrada" where "Key" = '3ebb6e4a-195e-466f-9278-606cb368596a'));
+                
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '8', (select "Id" from "FormaEntrada" where "Key" = '3ebb6e4a-195e-466f-9278-606cb368596a'));
+                
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '67', (select "Id" from "FormaEntrada" where "Key" = '3ebb6e4a-195e-466f-9278-606cb368596a'));
+                
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '88', (select "Id" from "FormaEntrada" where "Key" = '3ebb6e4a-195e-466f-9278-606cb368596a'));
+                
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '6', (select "Id" from "FormaEntrada" where "Key" = '3ebb6e4a-195e-466f-9278-606cb368596a'));
+                
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '66', (select "Id" from "FormaEntrada" where "Key" = '3ebb6e4a-195e-466f-9278-606cb368596a'));
+                
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '64', (select "Id" from "FormaEntrada" where "Key" = '21779510-3c1c-44b1-a40d-6d8180b0719d'));
+                
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '85', (select "Id" from "FormaEntrada" where "Key" = '21779510-3c1c-44b1-a40d-6d8180b0719d'));
+                
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '7', (select "Id" from "FormaEntrada" where "Key" = '21779510-3c1c-44b1-a40d-6d8180b0719d'));
+                
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '72', (select "Id" from "FormaEntrada" where "Key" = '66aca41f-0d50-4a53-938a-2a1855cd8d82'));
+                
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '83', (select "Id" from "FormaEntrada" where "Key" = '66aca41f-0d50-4a53-938a-2a1855cd8d82'));
+                
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '84', (select "Id" from "FormaEntrada" where "Key" = '66aca41f-0d50-4a53-938a-2a1855cd8d82'));
+                
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '74', (select "Id" from "FormaEntrada" where "Key" = '66aca41f-0d50-4a53-938a-2a1855cd8d82'));
+                
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '102', (select "Id" from "FormaEntrada" where "Key" = '1baf5ebb-b009-4ea6-a619-da67b83d0d41'));
+                            
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '89', (select "Id" from "FormaEntrada" where "Key" = '2cf76cd8-4ed8-4bd3-94f3-7f31f74fd1e1'));
+                
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '3', (select "Id" from "FormaEntrada" where "Key" = '2cf76cd8-4ed8-4bd3-94f3-7f31f74fd1e1'));
+                
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '62', (select "Id" from "FormaEntrada" where "Key" = '2cf76cd8-4ed8-4bd3-94f3-7f31f74fd1e1'));
+                
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '101', (select "Id" from "FormaEntrada" where "Key" = '2cf76cd8-4ed8-4bd3-94f3-7f31f74fd1e1'));
+                
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '105', (select "Id" from "FormaEntrada" where "Key" = '2cf76cd8-4ed8-4bd3-94f3-7f31f74fd1e1'));
+                
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '81', (select "Id" from "FormaEntrada" where "Key" = '2cf76cd8-4ed8-4bd3-94f3-7f31f74fd1e1'));
+                
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '2', (select "Id" from "FormaEntrada" where "Key" = 'b2cc84db-9f98-43dc-b578-735486879407'));
+                
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '68', (select "Id" from "FormaEntrada" where "Key" = 'b2cc84db-9f98-43dc-b578-735486879407'));
+
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '38', (select "Id" from "FormaEntrada" where "Key" = '66aca41f-0d50-4a53-938a-2a1855cd8d82'));
+
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '63', (select "Id" from "FormaEntrada" where "Key" = '66aca41f-0d50-4a53-938a-2a1855cd8d82'));
+
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '90', (select "Id" from "FormaEntrada" where "Key" = '66aca41f-0d50-4a53-938a-2a1855cd8d82'));
+
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '2', (select "Id" from "FormaEntrada" where "Key" = 'b2cc84db-9f98-43dc-b578-735486879407'));
+
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '2', (select "Id" from "FormaEntrada" where "Key" = 'f0a0c8a1-1aff-4321-b33c-21cbe45309b3'));
+
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '2', (select "Id" from "FormaEntrada" where "Key" = '9de4b05d-c4d6-4b51-9209-be73d2b3a984'));
+
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '2', (select "Id" from "FormaEntrada" where "Key" = 'c97cab02-7905-49ae-8a75-39b28da142d1'));
+
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '68', (select "Id" from "FormaEntrada" where "Key" = 'b2cc84db-9f98-43dc-b578-735486879407'));
+
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '68', (select "Id" from "FormaEntrada" where "Key" = 'f0a0c8a1-1aff-4321-b33c-21cbe45309b3'));
+
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '68', (select "Id" from "FormaEntrada" where "Key" = '9de4b05d-c4d6-4b51-9209-be73d2b3a984'));
+
+                INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib'), '68', (select "Id" from "FormaEntrada" where "Key" = 'c97cab02-7905-49ae-8a75-39b28da142d1'));
+
+
+

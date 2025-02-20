@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: Muda o nome das tabelas StatusInscricao e EtapasInscricao
+      author: Rafael
+      changes:
+        - renameTable:
+            oldTableName: StatusInscricao
+            newTableName: InscricaoStatus
+        - renameTable:
+            oldTableName: EtapasInscricao
+            newTableName: InscricaoEtapas

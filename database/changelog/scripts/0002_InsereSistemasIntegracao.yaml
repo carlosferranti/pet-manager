@@ -1,0 +1,73 @@
+databaseChangeLog:
+  - changeSet:
+      id: Insere sistema GCX
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 1
+                sql:  SELECT count(1)
+                      FROM information_schema.tables
+                      WHERE table_name = 'SistemaIntegracao';
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM public."SistemaIntegracao"
+                      WHERE "Nome" = 'GCX';
+      changes:
+        - insert:
+            schemaName: public
+            tableName: SistemaIntegracao
+            columns:
+              - column:
+                  name: Key
+                  value: 4c626ac9-ee1c-406a-865a-7ccb1589ad0d
+              - column:
+                  name: Nome
+                  value: GCX
+              - column:
+                  name: Ativo
+                  value: true
+              - column:
+                  name: CriadoEm
+                  valueComputed: current_timestamp 
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp 
+  - changeSet:
+      id: Insere sistema Vestib
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 1
+                sql:  SELECT count(1)
+                      FROM information_schema.tables
+                      WHERE table_name = 'SistemaIntegracao';
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM public."SistemaIntegracao"
+                      WHERE "Nome" = 'Vestib';
+      changes:
+        - insert:
+            schemaName: public
+            tableName: SistemaIntegracao
+            columns:
+              - column:
+                  name: Key
+                  value: 101f19f2-521b-49f1-805f-777986977832
+              - column:
+                  name: Nome
+                  value: Vestib
+              - column:
+                  name: Ativo
+                  value: true
+              - column:
+                  name: CriadoEm
+                  valueComputed: current_timestamp 
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp 

@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: Inativa estado duplicado
+      author: Rafael
+      changes:
+        - sql:
+            sql: |
+              update "Estado" 
+              set "Ativo" = false
+              where "PaisId" = (select "Id" from "Pais" where "Key" = '70770647-3354-45b8-b6c2-35b8de7e821c')
+              and "Nome" = 'Pernambuco' and "Sigla" = '26'

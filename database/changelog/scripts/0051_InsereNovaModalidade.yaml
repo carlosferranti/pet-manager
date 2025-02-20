@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: Insere nova modalidade
+      author: Rafael
+      changes:
+        - sql:
+            sql:  INSERT INTO public."Modalidade"("Nome", "Ativo", "Key", "CriadoEm", "AlteradoEm")
+                    VALUES ('70/30', true, gen_uuid(), current_timestamp, current_timestamp);
+                  INSERT INTO public."IntegracaoModalidade"("IntegracaoSistemaId", "CodigoOrigem", "ModalidadeId")
+                    VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'GCX'), '8',  (select max("Id") from public."Modalidade"));

@@ -1,0 +1,57 @@
+databaseChangeLog:
+-  changeSet:
+    id: Alterar a tabela InscricaoDeficiencia removendo a coluna LocalArquivo
+    author:  Rafael
+    preConditions:
+        onFail: MARK_RAN
+        and:
+          tableExists:
+            tableName: InscricaoDeficiencia
+            columnName:  LocalArquivo
+    changes:
+    -  dropColumn:
+          columnName:  LocalArquivo
+          schemaName:  public
+          tableName:  InscricaoDeficiencia
+-  changeSet:
+    id: Alterar a tabela InscricaoDeficiencia removendo a coluna NomeArquivo
+    author:  Rafael
+    preConditions:
+        onFail: MARK_RAN
+        and:
+          tableExists:
+            tableName: InscricaoDeficiencia
+            columnName:  NomeArquivo
+    changes:
+    -  dropColumn:
+          columnName:  NomeArquivo
+          schemaName:  public
+          tableName:  InscricaoDeficiencia
+-  changeSet:
+    id: Alterar a tabela InscricaoDeficiencia removendo a coluna ExtensaoArquivo
+    author:  Rafael
+    preConditions:
+        onFail: MARK_RAN
+        and:
+          tableExists:
+            tableName: InscricaoDeficiencia
+            columnName:  ExtensaoArquivo
+    changes:
+    -  dropColumn:
+        columnName:  ExtensaoArquivo
+        schemaName:  public
+        tableName:  InscricaoDeficiencia
+-  changeSet:
+    id: Alterar a tabela InscricaoDeficiencia removendo a coluna TamanhoArquivo
+    author:  Rafael
+    preConditions:
+        onFail: MARK_RAN
+        and:
+          tableExists:
+            tableName: InscricaoDeficiencia
+            columnName:  TamanhoArquivo
+    changes:
+    -  dropColumn:
+          columnName:  TamanhoArquivo
+          schemaName:  public
+          tableName:  InscricaoDeficiencia

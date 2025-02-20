@@ -1,0 +1,50 @@
+databaseChangeLog:
+  - changeSet:
+      id: Cria tabela IntegracaoConcursoFormaProva
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          tableExists:
+            tableName: IntegracaoConcursoFormaProva
+      changes:
+        - createTable:
+            tableName: IntegracaoConcursoFormaProva
+            columns:
+              - column:
+                  autoIncrement: true
+                  name: Id
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: IntegracaoSistemaId
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: CodigoOrigem
+                  type: character varying(100)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: ConcursoId 
+                  type: integer
+        - addPrimaryKey:
+            tableName: IntegracaoConcursoFormaProva
+            columnNames: Id
+            constraintName: PK_IntegracaoConcursoFormaProva
+        -  addForeignKeyConstraint:
+            baseColumnNames: IntegracaoSistemaId
+            baseTableName: IntegracaoConcursoFormaProva
+            constraintName: FK_IntegracaoConcursoFormaProva_SistemaIntegracao_IntegracaoSistemaId
+            referencedColumnNames: Id
+            referencedTableName: SistemaIntegracao
+            onDelete: RESTRICT
+        -  addForeignKeyConstraint:
+            baseColumnNames: ConcursoId
+            baseTableName: IntegracaoConcursoFormaProva
+            constraintName: FK_IntegracaoConcursoFormaProva_Concurso_ConcursoId
+            referencedColumnNames: Id
+            referencedTableName: Concurso
+            onDelete: RESTRICT

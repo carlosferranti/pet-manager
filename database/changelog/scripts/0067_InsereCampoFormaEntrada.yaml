@@ -1,0 +1,53 @@
+databaseChangeLog:
+  - changeSet:
+      id: Insere campo Forma de entrada
+      author: Rafael
+      changes:
+        - insert:
+            schemaName: public
+            tableName: Campo
+            columns:
+              - column:
+                  name: Nome
+                  value: Forma de entrada
+              - column:
+                  name: Key
+                  value: 72ecf4e8-e8ce-4ce3-84d0-a5d21ac8447c
+              - column:
+                  name: Ativo
+                  value: true
+              - column:
+                  name: CriadoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp
+  - changeSet:
+      id: Insere campo Forma de entrada na ficha padrão
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM public."CampoFicha"
+                      WHERE "FichaId" = (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+                      AND "CampoId" = (select "Id" from public."Campo" where "Key" = '72ecf4e8-e8ce-4ce3-84d0-a5d21ac8447c');
+      changes:
+        - insert:
+            schemaName: public
+            tableName: CampoFicha
+            columns:
+              - column:
+                  name: FichaId
+                  valueComputed: (select "Id" from public."Ficha" where "Key" = 'ccd55148-9748-40dc-9333-44603b9e395f')
+              - column:
+                  name: CampoId
+                  valueComputed: (select "Id" from public."Campo" where "Key" = '72ecf4e8-e8ce-4ce3-84d0-a5d21ac8447c')
+              - column:
+                  name: ObrigatorioNaFicha
+                  value: true
+              - column:
+                  name: ObrigatorioNoComplemento
+                  value: false

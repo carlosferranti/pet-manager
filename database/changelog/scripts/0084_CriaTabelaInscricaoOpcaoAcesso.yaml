@@ -1,0 +1,73 @@
+databaseChangeLog:
+  - changeSet:
+      id: Cria tabela InscricaoOpcaoAcesso
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM information_schema.tables
+                      WHERE table_name = 'InscricaoOpcaoAcesso';
+      changes:
+        - createTable:
+            tableName: InscricaoOpcaoAcesso
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                  name: Id
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: InscricaoCandidatoId
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: OfertaConcursoOpcaoAcessoId
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Key
+                  type: uuid
+              - column:
+                  constraints:
+                    nullable: false
+                  name: CriadoEm
+                  type: TIMESTAMP WITH TIME ZONE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: AlteradoEm
+                  type: TIMESTAMP WITH TIME ZONE
+        - addForeignKeyConstraint:
+            baseColumnNames: OfertaConcursoOpcaoAcessoId
+            baseTableName: InscricaoOpcaoAcesso
+            constraintName: FK_InscricaoOpcaoAcesso_OfertaConcursoOpcaoAcesso_OfertaConcursoOpcaoAcessoId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: OfertaConcursoOpcaoAcesso
+            validate: true
+        - addForeignKeyConstraint:
+            baseColumnNames: InscricaoCandidatoId
+            baseTableName: InscricaoOpcaoAcesso
+            constraintName: FK_InscricaoOpcaoAcesso_InscricaoCandidato_InscricaoCandidatoId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: InscricaoCandidato
+            validate: true
+        - addPrimaryKey:
+            tableName: InscricaoOpcaoAcesso
+            columnNames: Id
+            constraintName: PK_InscricaoOpcaoAcesso

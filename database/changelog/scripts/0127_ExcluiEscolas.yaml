@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: Exclui carga de escolas anterior
+      author: Rafael
+      changes:
+        - sql:
+            sql: |
+
+              delete from public."Escola"

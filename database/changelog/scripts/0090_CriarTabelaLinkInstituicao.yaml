@@ -1,0 +1,69 @@
+databaseChangeLog:
+  - changeSet:
+      id: 235633 - Cria tabela LinkInstituicao
+      author: Jefferson Andrade
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM information_schema.tables
+                      WHERE table_name = 'LinkInstituicao';
+      changes:
+        - createTable:
+            tableName: LinkInstituicao
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                  name: Id
+                  type: integer
+              - column:
+                  autoIncrement: false
+                  constraints:
+                    nullable: false
+                  name: IdInstituicao
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: TipoLink
+                  type: varchar(250)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Url
+                  type: varchar(250)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Key
+                  type: uuid
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Ativo 
+                  type: boolean
+              - column:
+                  constraints:
+                    nullable: false
+                  name: CriadoEm
+                  type: TIMESTAMP WITH TIME ZONE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: AlteradoEm
+                  type: TIMESTAMP WITH TIME ZONE
+        - addPrimaryKey:
+            tableName: LinkInstituicao
+            columnNames: Id
+            constraintName: PK_LinkInstituicao  
+        -  addForeignKeyConstraint:
+            baseColumnNames: IdInstituicao
+            baseTableName: LinkInstituicao
+            constraintName: FK_LinkInstituicao_Instituicao_IdInstituicao
+            referencedColumnNames: Id
+            referencedTableName: Instituicao
+            onDelete: RESTRICT

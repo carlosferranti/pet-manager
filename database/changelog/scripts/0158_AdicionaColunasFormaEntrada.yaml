@@ -1,0 +1,59 @@
+databaseChangeLog:
+  - changeSet:
+      id: Adiciona coluna ExibeCard na tabela FormaEntrada
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'FormaEntrada' AND column_name = 'ExibeCard'
+      changes:
+        - addColumn:
+            schemaName: public
+            tableName: FormaEntrada
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: ExibeCard
+                  type: boolean
+                  defaultValue: false
+  - changeSet:
+      id: Adiciona coluna FormaIngressoPaiId na tabela FormaEntrada
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'FormaEntrada' AND column_name = 'FormaIngressoPaiId'
+      changes:
+        - addColumn:
+            schemaName: public
+            tableName: FormaEntrada
+            columns:
+              - column:
+                  constraints:
+                    nullable: true
+                  name: FormaIngressoPaiId
+                  type: integer
+  - changeSet:
+      id: Adiciona coluna UltimoNivel na tabela FormaEntrada
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'FormaEntrada' AND column_name = 'UltimoNivel'
+      changes:
+        - addColumn:
+            schemaName: public
+            tableName: FormaEntrada
+            columns:
+              - column:
+                  constraints:
+                    nullable: true
+                  name: UltimoNivel
+                  type: boolean

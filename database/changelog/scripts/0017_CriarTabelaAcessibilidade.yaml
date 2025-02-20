@@ -1,0 +1,47 @@
+databaseChangeLog:
+  - changeSet:
+      id: "218787 - Criar Tabela Acessibilidade"
+      author: Raoni
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          tableExists:
+            tableName: Acessibilidade
+      changes:
+        - createTable:
+            tableName: Acessibilidade
+            columns:
+              - column:
+                  name: Id
+                  type: integer
+                  autoIncrement: true
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Nome
+                  type: character varying(100)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Ativo
+                  type: boolean
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Key 
+                  type: uuid
+              - column:
+                  constraints:
+                    nullable: true
+                  name: CriadoEm
+                  type: timestamp with time zone
+              - column:
+                  constraints:
+                    nullable: true
+                  name: AlteradoEm
+                  type: timestamp with time zone
+        - addPrimaryKey:
+            tableName: Acessibilidade
+            columnNames: Id
+            constraintName: PK_Acessibilidade
+                  

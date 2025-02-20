@@ -1,0 +1,116 @@
+databaseChangeLog:
+  - changeSet:
+      id: Cria tabela Deficiencia
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM information_schema.tables
+                      WHERE table_name = 'Deficiencia';
+      changes:
+        - createTable:
+            tableName: Deficiencia
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                  name: Id
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Nome
+                  type: varchar(100)
+              - column:
+                  name: OrdemExibicao
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Ativo 
+                  type: boolean
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Key
+                  type: uuid
+              - column:
+                  constraints:
+                    nullable: false
+                  name: CriadoEm
+                  type: TIMESTAMP WITH TIME ZONE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: AlteradoEm
+                  type: TIMESTAMP WITH TIME ZONE
+        - addPrimaryKey:
+            tableName: Deficiencia
+            columnNames: Id
+            constraintName: PK_Deficiencia
+  - changeSet:
+      id: Cria tabela IntegracaoDeficiencia
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM information_schema.tables
+                      WHERE table_name = 'IntegracaoDeficiencia';
+      changes:
+        - createTable:
+            tableName: IntegracaoDeficiencia
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                  name: Id
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: IntegracaoSistemaId
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: CodigoOrigem
+                  type: varchar(100)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: DeficienciaId 
+                  type: integer
+        - addPrimaryKey:
+            tableName: IntegracaoDeficiencia
+            columnNames: Id
+            constraintName: PK_IntegracaoDeficiencia
+        - addForeignKeyConstraint:
+            baseColumnNames: DeficienciaId
+            baseTableName: IntegracaoDeficiencia
+            constraintName: FK_IntegracaoDeficiencia_Deficiencia_DeficienciaId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: Deficiencia
+            validate: true
+        - addForeignKeyConstraint:
+            baseColumnNames: IntegracaoSistemaId
+            baseTableName: IntegracaoDeficiencia
+            constraintName: FK_IntegracaoDeficiencia_SistemaIntegracao_IntegracaoSistemaId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: SistemaIntegracao
+            validate: true

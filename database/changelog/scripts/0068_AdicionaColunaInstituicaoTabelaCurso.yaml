@@ -1,0 +1,31 @@
+databaseChangeLog:
+-  changeSet:
+    id: Alterar a tabela Curso adicionando a coluna InstituicaoId
+    author:  Rafael
+    preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'Curso' AND column_name = 'InstituicaoId'
+    changes:
+      - addColumn:
+          schemaName: public
+          tableName: Curso
+          columns:
+            - column:
+                constraints:
+                  nullable: false
+                name: InstituicaoId 
+                type: integer
+      - addForeignKeyConstraint:
+            baseColumnNames: InstituicaoId
+            baseTableName: Curso
+            constraintName: FK_Curso_Instituicao_InstituicaoId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: Instituicao
+            validate: true

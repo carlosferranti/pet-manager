@@ -1,0 +1,70 @@
+databaseChangeLog:
+  - changeSet:
+      id: Cria tabela LinkFormaEntrada
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          tableExists:
+            tableName: LinkFormaEntrada
+      changes:
+        - createTable:
+            tableName: LinkFormaEntrada
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Id
+                  type: integer
+                  autoIncrement: true
+              - column:
+                  constraints:
+                    nullable: false
+                  name: LinkId
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: FormaEntradaId
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Ativo 
+                  type: boolean
+              - column:
+                  constraints:
+                    nullable: false
+                  name: CriadoEm
+                  type: TIMESTAMP WITH TIME ZONE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: AlteradoEm
+                  type: TIMESTAMP WITH TIME ZONE
+        - addPrimaryKey:
+            tableName: LinkFormaEntrada
+            columnNames: Id
+            constraintName: PK_LinkFormaEntrada
+        - addForeignKeyConstraint:
+            baseColumnNames: LinkId
+            baseTableName: LinkFormaEntrada
+            constraintName: FK_LinkFormaEntrada_Link_LinkId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: Link
+            validate: true
+        - addForeignKeyConstraint:
+            baseColumnNames: FormaEntradaId
+            baseTableName: LinkFormaEntrada
+            constraintName: FK_LinkFormaEntrada_FormaEntrada_FormaEntradaId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: FormaEntrada
+            validate: true

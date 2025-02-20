@@ -1,0 +1,83 @@
+databaseChangeLog:
+  - changeSet:
+      id: Cria tabela InscricaoFormaEntrada
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM information_schema.tables
+                      WHERE table_name = 'InscricaoFormaEntrada';
+      changes:
+        - createTable:
+            tableName: InscricaoFormaEntrada
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                  name: Id
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: InscricaoCandidatoId
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: FormaEntradaId
+                  type: integer    
+              - column:
+                  constraints:
+                    nullable: false
+                  name: CriadoEm
+                  type: TIMESTAMP WITH TIME ZONE
+              - column:
+                  constraints:
+                    nullable: true
+                  name: AlteradoEm
+                  type: TIMESTAMP WITH TIME ZONE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: CodigoTipoSelecao 
+                  type: varchar(20)
+              - column:
+                  constraints:
+                    nullable: true
+                  name: Observacoes  
+                  type: varchar(200)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Atual
+                  type: boolean
+        - addPrimaryKey:
+            tableName: InscricaoFormaEntrada
+            columnNames: Id
+            constraintName: PK_InscricaoFormaEntrada
+        - addForeignKeyConstraint:
+            baseColumnNames: InscricaoCandidatoId
+            baseTableName: InscricaoFormaEntrada
+            constraintName: FK_InscricaoFormaEntrada_InscricaoCandidato_InscricaoCandidatoId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: InscricaoCandidato
+            validate: true
+        - addForeignKeyConstraint:
+            baseColumnNames: FormaEntradaId
+            baseTableName: InscricaoFormaEntrada
+            constraintName: FK_InscricaoFormaEntrada_FormaEntrada_FormaEntradaId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: FormaEntrada
+            validate: true

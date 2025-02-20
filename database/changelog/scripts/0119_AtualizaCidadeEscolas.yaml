@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: Atualiza cidade das escolas onde a cidade foi inativada
+      author: Rafael
+      changes:
+        - sql:
+            sql: |
+
+              UPDATE
+                "Escola" e
+              SET
+                "CidadeId" = cAtiva."Id",
+                "AlteradoEm" = now()
+              FROM
+                "Cidade" cInativa
+                join "Cidade" cAtiva on cAtiva."Nome" = cInativa."Nome" and cAtiva."EstadoId" = cInativa."EstadoId"
+              WHERE
+                e."CidadeId" = cInativa."Id"
+                  and cInativa."Ativo" = false
+                and cAtiva."Ativo" = true             

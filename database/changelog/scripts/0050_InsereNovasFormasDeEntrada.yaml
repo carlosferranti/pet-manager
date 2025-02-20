@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: Insere novas formas de entrada
+      author: Rafael
+      changes:
+        - sql:
+            sql:  INSERT INTO public."FormaEntrada"("Nome", "Ativo", "Key", "CriadoEm", "AlteradoEm")
+                    VALUES ('Fies', true, gen_uuid(), current_timestamp, current_timestamp);
+                  INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                    VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'GCX'), '12',  (select max("Id") from public."FormaEntrada"));
+
+                  INSERT INTO public."FormaEntrada"("Nome", "Ativo", "Key", "CriadoEm", "AlteradoEm")
+                    VALUES ('Prouni', true, gen_uuid(), current_timestamp, current_timestamp);
+                  INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                    VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'GCX'), '13',  (select max("Id") from public."FormaEntrada"));

@@ -1,0 +1,321 @@
+databaseChangeLog:
+  - changeSet:
+      id: Insere Reopção no link padrão
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM public."LinkFormaEntrada"
+                      WHERE "LinkId" = (select "Id" from public."Link" where "Key" = '85d86954-c5b1-44fa-8382-e34f4fa8f878') and
+                            "FormaEntradaId" = (select "Id" from public."FormaEntrada" where "Key" = '21779510-3c1c-44b1-a40d-6d8180b0719d');
+      changes:
+        - insert:
+            schemaName: public
+            tableName: LinkFormaEntrada
+            columns:
+              - column:
+                  name: LinkId
+                  valueComputed: (select "Id" from public."Link" where "Key" = '85d86954-c5b1-44fa-8382-e34f4fa8f878')
+              - column:
+                  name: Ativo
+                  value: true
+              - column:
+                  name: CriadoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: FormaEntradaId
+                  valueComputed: (select "Id" from public."FormaEntrada" where "Key" = '21779510-3c1c-44b1-a40d-6d8180b0719d')
+  - changeSet:
+      id: Insere Segunda Graduação no link padrão
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM public."LinkFormaEntrada"
+                      WHERE "LinkId" = (select "Id" from public."Link" where "Key" = '85d86954-c5b1-44fa-8382-e34f4fa8f878') and
+                            "FormaEntradaId" = (select "Id" from public."FormaEntrada" where "Key" = '3ebb6e4a-195e-466f-9278-606cb368596a');
+      changes:
+        - insert:
+            schemaName: public
+            tableName: LinkFormaEntrada
+            columns:
+              - column:
+                  name: LinkId
+                  valueComputed: (select "Id" from public."Link" where "Key" = '85d86954-c5b1-44fa-8382-e34f4fa8f878')
+              - column:
+                  name: Ativo
+                  value: true
+              - column:
+                  name: CriadoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: FormaEntradaId
+                  valueComputed: (select "Id" from public."FormaEntrada" where "Key" = '3ebb6e4a-195e-466f-9278-606cb368596a')
+  - changeSet:
+      id: Insere Retornar/Destrancar no link padrão
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM public."LinkFormaEntrada"
+                      WHERE "LinkId" = (select "Id" from public."Link" where "Key" = '85d86954-c5b1-44fa-8382-e34f4fa8f878') and
+                            "FormaEntradaId" = (select "Id" from public."FormaEntrada" where "Key" = '66aca41f-0d50-4a53-938a-2a1855cd8d82');
+      changes:
+        - insert:
+            schemaName: public
+            tableName: LinkFormaEntrada
+            columns:
+              - column:
+                  name: LinkId
+                  valueComputed: (select "Id" from public."Link" where "Key" = '85d86954-c5b1-44fa-8382-e34f4fa8f878')
+              - column:
+                  name: Ativo
+                  value: true
+              - column:
+                  name: CriadoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: FormaEntradaId
+                  valueComputed: (select "Id" from public."FormaEntrada" where "Key" = '66aca41f-0d50-4a53-938a-2a1855cd8d82')
+  - changeSet:
+      id: Insere ENEM no link padrão
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM public."LinkFormaEntrada"
+                      WHERE "LinkId" = (select "Id" from public."Link" where "Key" = '85d86954-c5b1-44fa-8382-e34f4fa8f878') and
+                            "FormaEntradaId" = (select "Id" from public."FormaEntrada" where "Key" = 'c97cab02-7905-49ae-8a75-39b28da142d1');
+      changes:
+        - insert:
+            schemaName: public
+            tableName: LinkFormaEntrada
+            columns:
+              - column:
+                  name: LinkId
+                  valueComputed: (select "Id" from public."Link" where "Key" = '85d86954-c5b1-44fa-8382-e34f4fa8f878')
+              - column:
+                  name: Ativo
+                  value: true
+              - column:
+                  name: CriadoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: FormaEntradaId
+                  valueComputed: (select "Id" from public."FormaEntrada" where "Key" = 'c97cab02-7905-49ae-8a75-39b28da142d1')
+  - changeSet:
+      id: Insere Transferência no link padrão
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM public."LinkFormaEntrada"
+                      WHERE "LinkId" = (select "Id" from public."Link" where "Key" = '85d86954-c5b1-44fa-8382-e34f4fa8f878') and
+                            "FormaEntradaId" = (select "Id" from public."FormaEntrada" where "Key" = '2cf76cd8-4ed8-4bd3-94f3-7f31f74fd1e1');
+      changes:
+        - insert:
+            schemaName: public
+            tableName: LinkFormaEntrada
+            columns:
+              - column:
+                  name: LinkId
+                  valueComputed: (select "Id" from public."Link" where "Key" = '85d86954-c5b1-44fa-8382-e34f4fa8f878')
+              - column:
+                  name: Ativo
+                  value: true
+              - column:
+                  name: CriadoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: FormaEntradaId
+                  valueComputed: (select "Id" from public."FormaEntrada" where "Key" = '2cf76cd8-4ed8-4bd3-94f3-7f31f74fd1e1')
+  - changeSet:
+      id: Insere Vestibular Simplificado no link padrão
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM public."LinkFormaEntrada"
+                      WHERE "LinkId" = (select "Id" from public."Link" where "Key" = '85d86954-c5b1-44fa-8382-e34f4fa8f878') and
+                            "FormaEntradaId" = (select "Id" from public."FormaEntrada" where "Key" = '1baf5ebb-b009-4ea6-a619-da67b83d0d41');
+      changes:
+        - insert:
+            schemaName: public
+            tableName: LinkFormaEntrada
+            columns:
+              - column:
+                  name: LinkId
+                  valueComputed: (select "Id" from public."Link" where "Key" = '85d86954-c5b1-44fa-8382-e34f4fa8f878')
+              - column:
+                  name: Ativo
+                  value: true
+              - column:
+                  name: CriadoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: FormaEntradaId
+                  valueComputed: (select "Id" from public."FormaEntrada" where "Key" = '1baf5ebb-b009-4ea6-a619-da67b83d0d41')
+  - changeSet:
+      id: Insere Vestibular Tradicional no link padrão
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM public."LinkFormaEntrada"
+                      WHERE "LinkId" = (select "Id" from public."Link" where "Key" = '85d86954-c5b1-44fa-8382-e34f4fa8f878') and
+                            "FormaEntradaId" = (select "Id" from public."FormaEntrada" where "Key" = 'b2cc84db-9f98-43dc-b578-735486879407');
+      changes:
+        - insert:
+            schemaName: public
+            tableName: LinkFormaEntrada
+            columns:
+              - column:
+                  name: LinkId
+                  valueComputed: (select "Id" from public."Link" where "Key" = '85d86954-c5b1-44fa-8382-e34f4fa8f878')
+              - column:
+                  name: Ativo
+                  value: true
+              - column:
+                  name: CriadoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: FormaEntradaId
+                  valueComputed: (select "Id" from public."FormaEntrada" where "Key" = 'b2cc84db-9f98-43dc-b578-735486879407')
+  - changeSet:
+      id: Insere Vestibular Corporativo no link Vestibular Corporativo
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM public."LinkFormaEntrada"
+                      WHERE "LinkId" = (select "Id" from public."Link" where "Key" = 'ceb31c9f-4582-4b68-a388-5bf5a268f73f') and
+                            "FormaEntradaId" = (select "Id" from public."FormaEntrada" where "Key" = '9de4b05d-c4d6-4b51-9209-be73d2b3a984');
+      changes:
+        - insert:
+            schemaName: public
+            tableName: LinkFormaEntrada
+            columns:
+              - column:
+                  name: LinkId
+                  valueComputed: (select "Id" from public."Link" where "Key" = 'ceb31c9f-4582-4b68-a388-5bf5a268f73f')
+              - column:
+                  name: Ativo
+                  value: true
+              - column:
+                  name: CriadoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: FormaEntradaId
+                  valueComputed: (select "Id" from public."FormaEntrada" where "Key" = '9de4b05d-c4d6-4b51-9209-be73d2b3a984')
+  - changeSet:
+      id: Insere Vestibular Escolar no link Vestibular Escolar
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM public."LinkFormaEntrada"
+                      WHERE "LinkId" = (select "Id" from public."Link" where "Key" = '0dcba295-8352-4c10-8fb8-ff22beb99b27') and
+                            "FormaEntradaId" = (select "Id" from public."FormaEntrada" where "Key" = 'f0a0c8a1-1aff-4321-b33c-21cbe45309b3');
+      changes:
+        - insert:
+            schemaName: public
+            tableName: LinkFormaEntrada
+            columns:
+              - column:
+                  name: LinkId
+                  valueComputed: (select "Id" from public."Link" where "Key" = '0dcba295-8352-4c10-8fb8-ff22beb99b27')
+              - column:
+                  name: Ativo
+                  value: true
+              - column:
+                  name: CriadoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: FormaEntradaId
+                  valueComputed: (select "Id" from public."FormaEntrada" where "Key" = 'f0a0c8a1-1aff-4321-b33c-21cbe45309b3')
+  - changeSet:
+      id: Insere Tecnólogo no link Tecnólogo
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM public."LinkFormaEntrada"
+                      WHERE "LinkId" = (select "Id" from public."Link" where "Key" = '05f69dc6-f6b8-4818-ac36-cee5d0ea8735') and
+                            "FormaEntradaId" = (select "Id" from public."FormaEntrada" where "Key" = '1fb70a23-8b36-4baf-a9ff-245339d568fa');
+      changes:
+        - insert:
+            schemaName: public
+            tableName: LinkFormaEntrada
+            columns:
+              - column:
+                  name: LinkId
+                  valueComputed: (select "Id" from public."Link" where "Key" = '05f69dc6-f6b8-4818-ac36-cee5d0ea8735')
+              - column:
+                  name: Ativo
+                  value: true
+              - column:
+                  name: CriadoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp
+              - column:
+                  name: FormaEntradaId
+                  valueComputed: (select "Id" from public."FormaEntrada" where "Key" = '1fb70a23-8b36-4baf-a9ff-245339d568fa')

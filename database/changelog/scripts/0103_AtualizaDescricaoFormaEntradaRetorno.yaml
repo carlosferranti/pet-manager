@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: Corrige descricao forma entrada Retornar
+      author: Pablo
+      changes:
+        - sql:
+            sql: |
+                  update "FormaEntrada"
+                  set "Descricao" = 'Retorne à instituição escolhendo um curso diferente do qual iniciou seus estudos ou volte para o curso exatamente de onde parou.'
+                  where "Nome" = 'Retornar/Destrancar';

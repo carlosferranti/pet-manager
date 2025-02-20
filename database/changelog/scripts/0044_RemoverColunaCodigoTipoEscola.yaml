@@ -1,0 +1,15 @@
+databaseChangeLog:
+-  changeSet:
+    id:  "225478 - Remover coluna CodigoTipoEscola"
+    author:  Raoni
+    preConditions:
+        onFail: MARK_RAN
+        and:
+          tableExists:
+            tableName: Escola
+            columnName:  CodigoTipoEscola
+    changes:
+    -  dropColumn:
+        columnName:  CodigoTipoEscola
+        schemaName:  public
+        tableName:  Escola

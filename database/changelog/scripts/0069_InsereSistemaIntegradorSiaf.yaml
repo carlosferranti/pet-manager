@@ -1,0 +1,37 @@
+databaseChangeLog:
+  - changeSet:
+      id: Insere sistema SIAF
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 1
+                sql:  SELECT count(1)
+                      FROM information_schema.tables
+                      WHERE table_name = 'SistemaIntegracao';
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM public."SistemaIntegracao"
+                      WHERE "Nome" = 'SIAF';
+      changes:
+        - insert:
+            schemaName: public
+            tableName: SistemaIntegracao
+            columns:
+              - column:
+                  name: Key
+                  value: 62e47587-c2e2-4898-bb27-a130a299fa82
+              - column:
+                  name: Nome
+                  value: SIAF
+              - column:
+                  name: Ativo
+                  value: true
+              - column:
+                  name: CriadoEm
+                  valueComputed: current_timestamp 
+              - column:
+                  name: AlteradoEm
+                  valueComputed: current_timestamp 

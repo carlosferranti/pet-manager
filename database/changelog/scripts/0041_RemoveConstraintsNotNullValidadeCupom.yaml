@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: Remove constraint Not Null da coluna DataValidade na tabela Cupom
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 1
+                sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'Cupom' AND column_name = 'DataValidade'
+      changes:
+        - dropNotNullConstraint:
+            columnName: DataValidade
+            tableName: Cupom

@@ -1,0 +1,73 @@
+databaseChangeLog:
+  - changeSet:
+      id: "218787 - Realizar Carga Acessibilidade"
+      author: Raoni
+      preConditions:
+        - onFail: MARK_RAN
+        - sqlCheck:
+            expectedResult: 1
+            sql:  SELECT count(1) 
+                  FROM INFORMATION_SCHEMA.TABLES 
+                  WHERE TABLE_NAME = 'Acessibilidade' 
+        - sqlCheck:
+            expectedResult: 1
+            sql:  SELECT count(1) 
+                  FROM INFORMATION_SCHEMA.TABLES 
+                  WHERE TABLE_NAME = 'IntegracaoAcessibilidade'
+      changes:
+        - sql:
+            sql: |
+              INSERT INTO public."Acessibilidade" ("Nome", "Ativo", "Key", "CriadoEm", "AlteradoEm") 
+                VALUES ('Intérprete de libras', true, gen_uuid(), now(), now());
+                INSERT INTO public."IntegracaoAcessibilidade" ("IntegracaoSistemaId", "CodigoOrigem", "AcessibilidadeId")
+                VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '1', (SELECT MAX("Id") FROM public."Acessibilidade"));
+              
+              INSERT INTO public."Acessibilidade" ("Nome", "Ativo", "Key", "CriadoEm", "AlteradoEm")
+                VALUES ('Prova normal', true, gen_uuid(), now(), now());
+                INSERT INTO public."IntegracaoAcessibilidade" ("IntegracaoSistemaId", "CodigoOrigem", "AcessibilidadeId")
+                VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '2', (SELECT MAX("Id") FROM public."Acessibilidade"));
+
+              INSERT INTO public."Acessibilidade" ("Nome", "Ativo", "Key", "CriadoEm", "AlteradoEm")
+                VALUES ('Prova ampliada', true, gen_uuid(), now(), now());
+                INSERT INTO public."IntegracaoAcessibilidade" ("IntegracaoSistemaId", "CodigoOrigem", "AcessibilidadeId")
+                VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '3', (SELECT MAX("Id") FROM public."Acessibilidade"));
+
+              INSERT INTO public."Acessibilidade" ("Nome", "Ativo", "Key", "CriadoEm", "AlteradoEm")
+                VALUES ('Prova braile', true, gen_uuid(), now(), now());
+                INSERT INTO public."IntegracaoAcessibilidade" ("IntegracaoSistemaId", "CodigoOrigem", "AcessibilidadeId")
+                VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '4', (SELECT MAX("Id") FROM public."Acessibilidade"));
+
+              INSERT INTO public."Acessibilidade" ("Nome", "Ativo", "Key", "CriadoEm", "AlteradoEm")
+                VALUES ('Auxílio para transcrição', true, gen_uuid(), now(), now());
+                INSERT INTO public."IntegracaoAcessibilidade" ("IntegracaoSistemaId", "CodigoOrigem", "AcessibilidadeId")
+                VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '5', (SELECT MAX("Id") FROM public."Acessibilidade"));
+
+              INSERT INTO public."Acessibilidade" ("Nome", "Ativo", "Key", "CriadoEm", "AlteradoEm")
+                VALUES ('Hora adicional (60 min.)', true, gen_uuid(), now(), now());
+                INSERT INTO public."IntegracaoAcessibilidade" ("IntegracaoSistemaId", "CodigoOrigem", "AcessibilidadeId")
+                VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '6', (SELECT MAX("Id") FROM public."Acessibilidade"));
+
+              INSERT INTO public."Acessibilidade" ("Nome", "Ativo", "Key", "CriadoEm", "AlteradoEm")
+                VALUES ('Mobiliário acessível', true, gen_uuid(), now(), now());
+                INSERT INTO public."IntegracaoAcessibilidade" ("IntegracaoSistemaId", "CodigoOrigem", "AcessibilidadeId")
+                VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '7', (SELECT MAX("Id") FROM public."Acessibilidade"));
+
+              INSERT INTO public."Acessibilidade" ("Nome", "Ativo", "Key", "CriadoEm", "AlteradoEm")
+                VALUES ('Sala de fácil acesso', true, gen_uuid(), now(), now());
+                INSERT INTO public."IntegracaoAcessibilidade" ("IntegracaoSistemaId", "CodigoOrigem", "AcessibilidadeId")
+                VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '8', (SELECT MAX("Id") FROM public."Acessibilidade"));
+
+              INSERT INTO public."Acessibilidade" ("Nome", "Ativo", "Key", "CriadoEm", "AlteradoEm")
+                VALUES ('Sala para lactantes', true, gen_uuid(), now(), now());
+                INSERT INTO public."IntegracaoAcessibilidade" ("IntegracaoSistemaId", "CodigoOrigem", "AcessibilidadeId")
+                VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '9', (SELECT MAX("Id") FROM public."Acessibilidade"));
+
+              INSERT INTO public."Acessibilidade" ("Nome", "Ativo", "Key", "CriadoEm", "AlteradoEm")
+                VALUES ('Sala especial', true, gen_uuid(), now(), now());
+                INSERT INTO public."IntegracaoAcessibilidade" ("IntegracaoSistemaId", "CodigoOrigem", "AcessibilidadeId")
+                VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '10', (SELECT MAX("Id") FROM public."Acessibilidade"));
+
+              INSERT INTO public."Acessibilidade" ("Nome", "Ativo", "Key", "CriadoEm", "AlteradoEm")
+                VALUES ('Sala para adventista', true, gen_uuid(), now(), now());
+                INSERT INTO public."IntegracaoAcessibilidade" ("IntegracaoSistemaId", "CodigoOrigem", "AcessibilidadeId")
+                VALUES ((SELECT "Id" FROM "SistemaIntegracao" WHERE "Nome" = 'Vestib'), '11', (SELECT MAX("Id") FROM public."Acessibilidade"));

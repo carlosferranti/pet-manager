@@ -1,0 +1,65 @@
+databaseChangeLog:
+  - changeSet:
+      id: Insere novas formas de entrada
+      author: Rafael
+      changes:
+        - sql:
+            sql:  INSERT INTO public."FormaEntrada"("Nome", "Ativo", "Key", "CriadoEm", "AlteradoEm", "OrdemExibicao", "ExibeCard")
+                    VALUES ('Destrancamento', true, 'e958d772-06c0-462d-9115-779882159d8f', current_timestamp, current_timestamp, 9999, false);
+                  INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                    VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'SIAF'), '71',  (select max("Id") from public."FormaEntrada"));
+                  INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                    VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'SIAF'), '87',  (select max("Id") from public."FormaEntrada"));
+
+                  INSERT INTO public."FormaEntrada"("Nome", "Ativo", "Key", "CriadoEm", "AlteradoEm", "OrdemExibicao", "ExibeCard")
+                    VALUES ('Destrancamento com Reopção', true, '8faa1a46-4628-47e7-9140-0721ca995477', current_timestamp, current_timestamp, 9999, false);
+                  INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                    VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'SIAF'), '73',  (select max("Id") from public."FormaEntrada"));
+                  INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                    VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'SIAF'), '86',  (select max("Id") from public."FormaEntrada"));
+                  INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                    VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'SIAF'), '91',  (select max("Id") from public."FormaEntrada"));
+
+                  INSERT INTO public."FormaEntrada"("Nome", "Ativo", "Key", "CriadoEm", "AlteradoEm", "OrdemExibicao", "ExibeCard")
+                    VALUES ('Reingresso', true, '4ef13a24-dd8d-441f-b1f2-9bfa7770064f', current_timestamp, current_timestamp, 9999, false);
+                  INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                    VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'SIAF'), '38',  (select max("Id") from public."FormaEntrada"));
+                  INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                    VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'SIAF'), '63',  (select max("Id") from public."FormaEntrada"));
+                  INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                    VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'SIAF'), '72',  (select max("Id") from public."FormaEntrada"));
+                  INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                    VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'SIAF'), '83',  (select max("Id") from public."FormaEntrada"));
+
+                  INSERT INTO public."FormaEntrada"("Nome", "Ativo", "Key", "CriadoEm", "AlteradoEm", "OrdemExibicao", "ExibeCard")
+                    VALUES ('Reingresso com Reopção', true, '807c18c9-3e6c-4104-9ffb-71432b6a6b15', current_timestamp, current_timestamp, 9999, false);
+                  INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                    VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'SIAF'), '90',  (select max("Id") from public."FormaEntrada"));
+                  INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                    VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'SIAF'), '84',  (select max("Id") from public."FormaEntrada"));
+                  INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                    VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'SIAF'), '74',  (select max("Id") from public."FormaEntrada"));
+
+                  INSERT INTO public."FormaEntrada"("Nome", "Ativo", "Key", "CriadoEm", "AlteradoEm", "OrdemExibicao", "ExibeCard")
+                    VALUES ('Transferência Externa', true, 'b19997ca-47f3-4cc1-90eb-c914aeb279a6', current_timestamp, current_timestamp, 9999, false);
+                  INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                    VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'SIAF'), '3',  (select max("Id") from public."FormaEntrada"));
+                  INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                    VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'SIAF'), '89',  (select max("Id") from public."FormaEntrada"));
+                  INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                    VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'SIAF'), '62',  (select max("Id") from public."FormaEntrada"));
+
+                  INSERT INTO public."FormaEntrada"("Nome", "Ativo", "Key", "CriadoEm", "AlteradoEm", "OrdemExibicao", "ExibeCard")
+                    VALUES ('Transferência Interna', true, 'a1fdd914-3f7c-4b58-8939-1fbafb0d2c38', current_timestamp, current_timestamp, 9999, false);
+                  INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                    VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'SIAF'), '81',  (select max("Id") from public."FormaEntrada"));
+                  INSERT INTO public."IntegracaoFormaEntrada"("IntegracaoSistemaId", "CodigoOrigem", "FormaEntradaId")
+                    VALUES ((select "Id" from "SistemaIntegracao" where "Nome" = 'SIAF'), '105',  (select max("Id") from public."FormaEntrada"));
+
+                  delete from "IntegracaoFormaEntrada" where "FormaEntradaId" = 4 and "CodigoOrigem" not in ('8', '67', '88', '7');
+
+                  delete from "IntegracaoFormaEntrada" where "FormaEntradaId" = 5 and "CodigoOrigem" not in ('85', '7', '9');
+
+                  update "IntegracaoFormaEntrada" 
+                  set "IntegracaoSistemaId" = (select "Id" from "SistemaIntegracao" where "Nome" = 'SIAF')
+                  where "IntegracaoSistemaId" = (select "Id" from "SistemaIntegracao" where "Nome" = 'Vestib')

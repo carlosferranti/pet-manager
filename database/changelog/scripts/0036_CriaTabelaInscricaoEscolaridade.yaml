@@ -1,0 +1,111 @@
+databaseChangeLog:
+  - changeSet:
+      id: Cria tabela InscricaoEscolaridade
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM information_schema.tables
+                      WHERE table_name = 'InscricaoEscolaridade';
+      changes:
+        - createTable:
+            tableName: InscricaoEscolaridade
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                  name: Id
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Key
+                  type: uuid
+              - column:
+                  constraints:
+                    nullable: false
+                  name: AnoConclusao
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: InscricaoCandidatoId
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: EstadoId
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: CidadeId
+                  type: integer
+              - column:
+                  name: EscolaId
+                  type: integer
+              - column:
+                  name: OutraEscola
+                  type: varchar(200)          
+              - column:
+                  constraints:
+                    nullable: false
+                  name: CriadoEm
+                  type: TIMESTAMP WITH TIME ZONE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: AlteradoEm
+                  type: TIMESTAMP WITH TIME ZONE
+        - addPrimaryKey:
+            tableName: InscricaoEscolaridade
+            columnNames: Id
+            constraintName: PK_InscricaoEscolaridade
+        - addForeignKeyConstraint:
+            baseColumnNames: InscricaoCandidatoId
+            baseTableName: InscricaoEscolaridade
+            constraintName: FK_InscricaoEscolaridade_InscricaoCandidato_InscricaoCandidatoId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: InscricaoCandidato
+            validate: true
+        - addForeignKeyConstraint:
+            baseColumnNames: EstadoId
+            baseTableName: InscricaoEscolaridade
+            constraintName: FK_InscricaoEscolaridade_Estado_EstadoId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: Estado
+            validate: true
+        - addForeignKeyConstraint:
+            baseColumnNames: CidadeId
+            baseTableName: InscricaoEscolaridade
+            constraintName: FK_InscricaoEscolaridade_Cidade_CidadeId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: Cidade
+            validate: true
+        - addForeignKeyConstraint:
+            baseColumnNames: EscolaId
+            baseTableName: InscricaoEscolaridade
+            constraintName: FK_InscricaoEscolaridade_Escola_EscolaId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: Escola
+            validate: true

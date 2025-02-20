@@ -1,0 +1,210 @@
+databaseChangeLog:
+  - changeSet:
+      id: Cria tabela Empresa
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM information_schema.tables
+                      WHERE table_name = 'Empresa';
+      changes:
+        - createTable:
+            tableName: Empresa
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Id
+                  type: integer
+                  autoIncrement: true
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Key
+                  type: uuid
+              - column:
+                  constraints:
+                    nullable: true
+                  name: NomeFantasia
+                  type: varchar(250)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: RazaoSocial 
+                  type: varchar(250)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Cnpj 
+                  type: varchar(14)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Ativo 
+                  type: boolean
+              - column:
+                  constraints:
+                    nullable: false
+                  name: CriadoEm
+                  type: TIMESTAMP WITH TIME ZONE
+              - column:
+                  constraints:
+                    nullable: false
+                  name: AlteradoEm
+                  type: TIMESTAMP WITH TIME ZONE
+        - addPrimaryKey:
+            tableName: Empresa
+            columnNames: Id
+            constraintName: PK_Empresa 
+  - changeSet:
+      id: Cria tabela IntegracaoEmpresa
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM information_schema.tables
+                      WHERE table_name = 'IntegracaoEmpresa';
+      changes:
+        - createTable:
+            tableName: IntegracaoEmpresa
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Id
+                  type: integer
+                  autoIncrement: true
+              - column:
+                  constraints:
+                    nullable: false
+                  name: IntegracaoSistemaId
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: CodigoOrigem
+                  type: varchar(100)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: EmpresaId 
+                  type: integer
+        - addPrimaryKey:
+            tableName: IntegracaoEmpresa
+            columnNames: Id
+            constraintName: PK_IntegracaoEmpresa
+        - addForeignKeyConstraint:
+            baseColumnNames: EmpresaId
+            baseTableName: IntegracaoEmpresa
+            constraintName: FK_IntegracaoEmpresa_Empresa_EmpresaId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: Empresa
+            validate: true
+        - addForeignKeyConstraint:
+            baseColumnNames: IntegracaoSistemaId
+            baseTableName: IntegracaoEmpresa
+            constraintName: FK_IntegracaoEmpresa_SistemaIntegracao_IntegracaoSistemaId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: SistemaIntegracao
+            validate: true
+  - changeSet:
+      id: Cria tabela EmpresaEndereco
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 0
+                sql:  SELECT count(1)
+                      FROM information_schema.tables
+                      WHERE table_name = 'EmpresaEndereco';
+      changes:
+        - createTable:
+            tableName: EmpresaEndereco
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Id
+                  type: integer
+                  autoIncrement: true
+              - column:
+                  constraints:
+                    nullable: false
+                  name: EmpresaId 
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: Key
+                  type: uuid
+              - column:
+                  constraints:
+                    nullable: false
+                  name: CidadeId 
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: true
+                  name: Logradouro
+                  type: varchar(250)
+              - column:
+                  constraints:
+                    nullable: true
+                  name: Cep
+                  type: varchar(50)
+              - column:
+                  constraints:
+                    nullable: true
+                  name: Numero
+                  type: varchar(250)
+              - column:
+                  constraints:
+                    nullable: true
+                  name: Complemento
+                  type: varchar(250)
+              - column:
+                  constraints:
+                    nullable: true
+                  name: Bairro
+                  type: varchar(250)
+        - addPrimaryKey:
+            tableName: EmpresaEndereco
+            columnNames: Id
+            constraintName: PK_EmpresaEndereco
+        - addForeignKeyConstraint:
+            baseColumnNames: EmpresaId
+            baseTableName: EmpresaEndereco
+            constraintName: FK_EmpresaEndereco_Empresa_EmpresaId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: Empresa
+            validate: true
+        - addForeignKeyConstraint:
+            baseColumnNames: CidadeId
+            baseTableName: EmpresaEndereco
+            constraintName: FK_IEmpresaEndereco_Cidade_CidadeId
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: RESTRICT
+            onUpdate: NO ACTION
+            referencedColumnNames: Id
+            referencedTableName: Cidade
+            validate: true

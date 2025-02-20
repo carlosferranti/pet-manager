@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: Aumenta limite de caracteres da coluna Nome na tabela NivelCurso
+      author: Rafael
+      preConditions:
+        onFail: MARK_RAN
+        and:
+          - sqlCheck:
+                expectedResult: 1
+                sql:  SELECT count(1) FROM information_schema.columns WHERE table_name = 'NivelCurso' AND column_name = 'Nome'
+      changes:
+        - sql:
+            sql: |
+              ALTER TABLE "NivelCurso" ALTER COLUMN "Nome" TYPE character varying(255);

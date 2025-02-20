@@ -1,0 +1,50 @@
+databaseChangeLog:
+  - changeSet:
+      id: "218787 - Criar Tabela IntegracaoInscricao"
+      author: Raoni
+      preConditions:
+        onFail: MARK_RAN
+        not:
+          tableExists:
+            tableName: IntegracaoInscricao
+      changes:
+        - createTable:
+            tableName: IntegracaoInscricao
+            columns:
+              - column:
+                  autoIncrement: true
+                  name: Id
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: IntegracaoSistemaId
+                  type: integer
+              - column:
+                  constraints:
+                    nullable: false
+                  name: CodigoOrigem
+                  type: character varying(100)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: InscricaoCandidatoId 
+                  type: integer
+        - addPrimaryKey:
+            tableName: IntegracaoInscricao
+            columnNames: Id
+            constraintName: PK_IntegracaoInscricao
+        -  addForeignKeyConstraint:
+            baseColumnNames: IntegracaoSistemaId
+            baseTableName: IntegracaoInscricao
+            constraintName: FK_IntegracaoInscricao_SistemaIntegracao_IntegracaoSistemaId
+            referencedColumnNames: Id
+            referencedTableName: SistemaIntegracao
+            onDelete: RESTRICT
+        -  addForeignKeyConstraint:
+            baseColumnNames: InscricaoCandidatoId
+            baseTableName: IntegracaoInscricao
+            constraintName: FK_IntegracaoInscricao_InscricaoCandidato_InscricaoCandidatoId
+            referencedColumnNames: Id
+            referencedTableName: InscricaoCandidato
+            onDelete: RESTRICT
