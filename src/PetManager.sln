@@ -4,10 +4,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "database", "database", "{7D792915-E46A-460D-9223-2871F347FE3D}"
+	ProjectSection(SolutionItems) = preProject
+		..\database\docker-compose.yaml = ..\database\docker-compose.yaml
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FB82DC01-BBA9-4F41-829A-FD5004BAD1CA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{F76FC8C6-E6DA-4CD1-8380-900FADAB3FEE}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\deploy\Deployment-AzureDevOps.yml = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\deploy\Deployment-AzureDevOps.yml
+		..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\deploy\Dockerfile = ..\..\..\..\Users\carlos.ferranti\source\repos\servico-inscricao\deploy\Dockerfile
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pet.Manager.Application", "Pet.Manager.Application\Pet.Manager.Application.csproj", "{174BAE85-6B1A-4F20-973B-B1CF9F9296C8}"
 EndProject
