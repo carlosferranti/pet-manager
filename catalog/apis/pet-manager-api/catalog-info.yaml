@@ -1,0 +1,14 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: pet-manager-api
+  title: pet-manager - API
+  description: Serviço responsável por gerenciamento das informações do processo de loja para pets.
+spec:
+  type: openapi
+  lifecycle: production
+  owner: group:default/squad-full
+  system: backstage-system
+  definition:
+    $text: https://cloudapp-dev.olympo.com.br/pet-manager/swagger/v1/swagger.json
