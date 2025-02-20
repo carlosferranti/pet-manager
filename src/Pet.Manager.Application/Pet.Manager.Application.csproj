@@ -1,9 +1,33 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
 
+    <ItemGroup>
+        <Folder Include="UseCases\Campi\ImportarCampus\" />
+        <Folder Include="UseCases\Enderecos\" />
+        <Folder Include="UseCases\Intakes\" />
+        <Folder Include="UseCases\Turnos\" />
+        <Folder Include="UseCases\Produtos\" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AutoMapper" Version="13.0.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="2.2.0" />
+        <PackageReference Include="Anima.Componente.CustomDistributedCache" Version="1.2.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="2.2.0" />
+        <PackageReference Include="Microsoft.Identity.Client" Version="4.64.1" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+        <PackageReference Include="AWSSDK.S3" Version="3.7.404.5" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Anima.Inscricao.Domain\Anima.Inscricao.Domain.csproj" />
+    </ItemGroup>
 </Project>
